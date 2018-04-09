@@ -22,6 +22,9 @@ namespace concept_0_03
         private bool isMusicStopped = false;
         private bool wasOptionsOpen = false;
         private bool wasFightOpen = false;
+        private bool fightStarted = false;
+
+        private int numOfEnemies = 3;
 
         private Player Player;
         private Sprite Obstacle;
@@ -38,7 +41,9 @@ namespace concept_0_03
 
         private Random random1 = new Random(Guid.NewGuid().GetHashCode());
         private Random random2 = new Random(Guid.NewGuid().GetHashCode());
+
         private Timer timer = new Timer();
+        private Timer fightStartTimer = new Timer();
 
         public bool IsPaused { get; private set; }
 
@@ -54,6 +59,10 @@ namespace concept_0_03
             timer.AutoReset = true;
             timer.Interval = 400;
             timer.Start();
+
+            fightStartTimer.AutoReset = false;
+            fightStartTimer.Interval = 800;
+            fightStartTimer.Start();
 
             #endregion
         }
@@ -83,7 +92,6 @@ namespace concept_0_03
             
             m_components = new List<Component>()
             {
-                // new Sprite(Content.Load<Texture2D>("stars")),
                 Player,
                 Obstacle,
             };
@@ -104,6 +112,8 @@ namespace concept_0_03
             foreach (var component in m_components)
                 component.Update(gameTime);
 
+            #region Player Intersecting Stuff
+            /*
             if (Player.Rectangle.Intersects(Obstacle.Rectangle))
             {
                 bgMusic.Pause();
@@ -116,6 +126,31 @@ namespace concept_0_03
 
                 wasFightOpen = true;
             }
+            */
+            #endregion
+
+            if (fightStarted == false)
+            {
+                fightStartTimer.Elapsed += new ElapsedEventHandler(startFight);
+            }
+
+            if (fightStarted == true)
+            {
+                numOfEnemies -= 1;
+
+                if (numOfEnemies < 0)
+                {
+                    m_ScreenManager.PopScreen();
+                }
+                else
+                {
+                    m_ScreenManager.PushScreen(new FightScreen(m_ScreenManager, "1-1"));
+
+                    fightStarted = false;
+                }
+                
+            }
+            
 
             if (isMusicStopped == true && wasOptionsOpen == true)
             {
@@ -123,8 +158,10 @@ namespace concept_0_03
                 wasOptionsOpen = false;
                 bgMusic.Resume();
             }
-
-            #region Enemy One Movement
+            
+            #region Enemy One Movement -- CURRENTLY DISABLED
+            /*
+            
 
             if (Obstacle.Position.X > enemyOneBounds.Left && Obstacle.Position.Y > enemyOneBounds.Top &&
                 Obstacle.Position.X < enemyOneBounds.Right && Obstacle.Position.Y < enemyOneBounds.Bottom)
@@ -188,7 +225,17 @@ namespace concept_0_03
                 Obstacle.Position = enemyOnePosition;
             }
 
+            */
             #endregion
+        }
+
+        private void startFight(object sender, ElapsedEventArgs e)
+        {
+            bgMusic.Pause();
+            fightStarted = true;
+            isMusicStopped = true;
+
+            wasFightOpen = true;
         }
 
         private void GetNewRandom(object sender, ElapsedEventArgs e)
@@ -222,6 +269,12 @@ namespace concept_0_03
                 wasOptionsOpen = true;
 
                 m_ScreenManager.PushScreen(new OptionsScreen(m_ScreenManager));
+            }
+
+            if (keyboard.IsKeyDown(Keys.Enter) && numOfEnemies >= 0)
+            {
+                fightStartTimer.Stop();
+                fightStartTimer.Start();
             }
         }
 

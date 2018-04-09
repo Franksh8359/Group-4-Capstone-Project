@@ -11,7 +11,7 @@ with.
     <!--
     Modify this string to change the font that will be imported.
     -->
-    <FontName>Arial Unicode MS</FontName>
+    <FontName>Meiryo</FontName>
 
     <!--
     Size is a float value, measured in points. Modify this value to change
@@ -50,20 +50,36 @@ with.
     character set. The characters are ordered according to the Unicode standard.
     See the documentation for more information.
     -->
-    <CharacterRegions>
-<!-- Ideographic Symbols and Punctuation -->
-<CharacterRegion><Start>&#x3000;</Start><End>&#x303F;</End></CharacterRegion>
-<!-- Hiragana -->
-<CharacterRegion><Start>&#x3040;</Start><End>&#x309F;</End></CharacterRegion>  
-<!-- Katakana -->
-<CharacterRegion><Start>&#x30A0;</Start><End>&#x30FF;</End></CharacterRegion>  
-<!-- Fullwidth Latin -->
-<CharacterRegion><Start>&#xFF01;</Start><End>&#xFFE6;</End></CharacterRegion>  
-<!-- and/or the standard Latin set... -->
-<CharacterRegion><Start>&#32;</Start><End>&#126;</End></CharacterRegion>
-
-	  
-	  
-    </CharacterRegions>
+    <!-- Ideographic Symbols and Punctuation -->
+	<CharacterRegions>
+		<CharacterRegion>
+			<Start>&#x3000;</Start>
+			<End>&#x303F;</End>
+		</CharacterRegion>
+		
+		<!-- Hiragana -->
+		<CharacterRegion>
+			<Start>&#x3040;</Start>
+			<End>&#x309F;</End>
+		</CharacterRegion>  
+		
+		<!-- Katakana -->
+		<CharacterRegion>
+			<Start>&#x30A0;</Start>
+			<End>&#x30FF;</End>
+		</CharacterRegion>
+		
+		<!-- Fullwidth Latin -->
+		<CharacterRegion>
+			<Start>&#xFF01;</Start>
+			<End>&#xFFE6;</End>
+		</CharacterRegion>  
+		
+		<!-- and/or the standard Latin set... -->
+		<CharacterRegion>
+			<Start>&#32;</Start>
+			<End>&#126;</End>
+		</CharacterRegion>
+	</CharacterRegions>
   </Asset>
 </XnaContent>

@@ -71,6 +71,13 @@ namespace concept_0_03
             bgMusic.IsLooped = true;
             bgMusic.Play();
 
+            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountainsSmaller"));
+            screenBackground.Position = new Vector2(-100, -2);
+
+            Sprite backPanel = new Sprite(content.Load<Texture2D>("textboxes/textbox620x400"));
+
+            backPanel.Position = new Vector2(90, 85);
+
             #region Character Portraits
 
             player01_port = new Sprite(content.Load<Texture2D>("Player/player01_port"));
@@ -141,6 +148,9 @@ namespace concept_0_03
 
             m_components = new List<Component>()
             {
+                screenBackground,
+                backPanel,
+
                 #region Portraits
 
                 player01_port,
