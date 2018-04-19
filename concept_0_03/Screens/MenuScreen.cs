@@ -14,6 +14,7 @@ namespace concept_0_03
     {
         private bool m_exitGame;
         private readonly IGameScreenManager m_ScreenManager;
+        private Command m_command;
 
         private Text m_titleText;
         private List<Component> m_components;
@@ -34,6 +35,7 @@ namespace concept_0_03
         public MenuScreen(IGameScreenManager gameScreenManager)
         {
             m_ScreenManager = gameScreenManager;
+            m_command = new Command(m_ScreenManager);
         }
 
         public void ChangeBetweenScreens()
@@ -56,13 +58,17 @@ namespace concept_0_03
             click = content.Load<SoundEffect>("SFX/Select_Click");
 
             bgSong = content.Load<SoundEffect>("Music/Bit Quest");
-            bgMusic = bgSong.CreateInstance();
 
-            bgMusic.IsLooped = true;
-            bgMusic.Play();
+            Game1.currentInstance = bgSong.CreateInstance();
+            Game1.currentInstance.IsLooped = true;
 
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountainsSmaller"));
-            screenBackground.Position = new Vector2(-100, -2);
+            Game1.m_audioState = Game1.AudioState.PLAYING;
+            Game1.currentInstance.Play();
+
+            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountainsSmaller"))
+            {
+                Position = new Vector2(-100, -2)
+            };
 
             #region Title Stuff
             string titleText = "Japakeys";
@@ -138,26 +144,26 @@ namespace concept_0_03
         }
 
         #region Button Methods
+
         private void NewGameButton_Click(object sender, EventArgs e)
         {
             click.Play();
-            bgMusic.Stop();
-            m_ScreenManager.ChangeScreen(new CharacterSelectionScreen(m_ScreenManager));
+
+            m_command.NewGame(m_ScreenManager);
         }
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
             click.Play();
 
-            Console.WriteLine("Load Game");
+            m_command.LoadGame(m_ScreenManager);
         }
 
         private void OptionsGameButton_Click(object sender, EventArgs e)
         {
-            bgMusic.Stop();
-            isMusicStopped = true;
+            click.Play();
 
-            m_ScreenManager.PushScreen(new OptionsScreen(m_ScreenManager));
+            m_command.OpenOptionsMenu(m_ScreenManager);
         }
 
         private void QuitGameButton_Click(object sender, EventArgs e)
@@ -171,23 +177,22 @@ namespace concept_0_03
         private void NewGameButton_Pressed()
         {
             click.Play();
-            bgMusic.Stop();
-            m_ScreenManager.ChangeScreen(new CharacterSelectionScreen(m_ScreenManager));
+
+            m_command.NewGame(m_ScreenManager);
         }
 
         private void LoadGameButton_Pressed()
         {
             click.Play();
 
-            Console.WriteLine("Load Game");
+            m_command.LoadGame(m_ScreenManager);
         }
 
         private void OptionsButton_Pressed()
         {
-            bgMusic.Stop();
-            isMusicStopped = true;
+            click.Play();
 
-            m_ScreenManager.PushScreen(new OptionsScreen(m_ScreenManager));
+            m_command.OpenOptionsMenu(m_ScreenManager);
         }
 
         private void QuitButton_Pressed()
@@ -223,12 +228,6 @@ namespace concept_0_03
         {
             foreach (var component in m_components)
                 component.Update(gameTime);
-
-            if (isMusicStopped == true)
-            {
-                isMusicStopped = false;
-                bgMusic.Play();
-            }
         }
 
         public void HandleInput(GameTime gameTime)

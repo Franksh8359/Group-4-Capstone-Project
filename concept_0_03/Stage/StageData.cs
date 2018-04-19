@@ -10,15 +10,39 @@ namespace concept_0_03.Stage
     {
         private List<StageBuild> stageList = new List<StageBuild>
         {
-            new StageBuild {ID = "1-1", Name = "Tsuki Forest", EnemyName = "Wraith", EnemySprite = "wraith", EnemyHP = 50,
-                            StageBG = "bgMountainsSmaller", StageFG = "", Timer = 65,
-                            CharContent = {"vowel"} }, //requires 10 correct answers with room for ~10 errors
-            new StageBuild {ID = "1-2", Name = "Tsuki Falls", EnemyName = "Wraith", EnemySprite = "wraith", EnemyHP = 70,
-                            StageBG = "bgCloudsSmaller", StageFG = "", Timer = 85,
-                            CharContent = {"k", "g"} }, //requires 14 correct answers with room for ~14 errors
-            new StageBuild {ID = "1-3", Name = "Tsuki Mountains", EnemyName = "Wraith", EnemySprite = "wraith", EnemyHP = 70,
-                            StageBG = "bgMountainsSmaller", StageFG = "", Timer = 85,
-                            CharContent = {"vowel", "g"} },
+            new StageBuild {
+                ID = "1-1",
+                Name = "Tsuki Forest",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 50,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "", Timer = 65,
+                Completed = false,
+                Unlocked = true,
+                CharContent = {"vowel"} }, //requires 10 correct answers with room for ~10 errors
+            new StageBuild {
+                ID = "1-2",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgCloudsSmaller",
+                StageFG = "", Timer = 85,
+                Completed = false,
+                Unlocked = false,
+                CharContent = {"k", "g"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-3",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "", Timer = 85,
+                Completed = false,
+                Unlocked = false,
+                CharContent = {"vowel", "g"} }, //requires 14 correct answers with room for ~14 errors
 
         };
 

@@ -23,6 +23,7 @@ namespace concept_0_03
         void Exit();
 
         event Action OnGameExit;
+
     }
 
     interface IGameScreen : IDisposable

@@ -1,0 +1,15 @@
+1,bo,bo,What is the letter that represents this symbol:,bo,ho,zo,bo,so,bo,What image represents the letter "bo",do,go,bo,mo,bo
+2,do,do,What is the letter that represents this symbol:,do,do,ko,ho,o,do,What image represents the letter "do",mo,do,so,ho,do
+3,go,go,What is the letter that represents this symbol:,go,zo,go,do,bo,go,What image represents the letter "go",ro,ho,do,go,go
+4,ho,ho,What is the letter that represents this symbol:,ho,so,no,o,ho,ho,What image represents the letter "ho",go,so,mo,ho,ho
+5,ko,ko,What is the letter that represents this symbol:,ko,bo,ho,ko,no,ko,What image represents the letter "ko",zo,do,go,ko,ko
+6,mo,mo,What is the letter that represents this symbol:,mo,mo,zo,so,do,mo,What image represents the letter "mo",mo,ho,ro,so,mo
+7,no,no,What is the letter that represents this symbol:,no,o,no,to,ko,no,What image represents the letter "no",do,mo,no,yo,no
+8,o,o,What is the letter that represents this symbol:,o,do,ho,bo,o,o,What image represents the letter "o",go,o,zo,ho,o
+9,po,po,What is the letter that represents this symbol:,po,zo,so,po,o,po,What image represents the letter "po",ro,do,mo,po,po
+10,ro,ro,What is the letter that represents this symbol:,ro,ro,ko,no,do,ro,What image represents the letter "ro",ro,zo,go,so,ro
+11,so,so,What is the letter that represents this symbol:,so,ho,so,zo,bo,so,What image represents the letter "so",do,so,ho,ro,so
+12,to,to,What is the letter that represents this symbol:,to,so,do,o,to,to,What image represents the letter "to",to,mo,zo,do,to
+13,wo,wo,What is the letter that represents this symbol:,wo,ko,bo,wo,no,wo,What image represents the letter "wo",ho,go,wo,so,wo
+14,yo,yo,What is the letter that represents this symbol:,yo,yo,so,ho,zo,yo,What image represents the letter "yo",yo,do,ro,ho,yo
+15,zo,zo,What is the letter that represents this symbol:,zo,ho,zo,so,ko,zo,What image represents the letter "zo",do,mo,go,zo,zo

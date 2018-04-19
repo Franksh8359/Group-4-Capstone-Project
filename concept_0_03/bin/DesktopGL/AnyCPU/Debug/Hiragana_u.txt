@@ -1,0 +1,14 @@
+1,bu,bu,What is the letter that represents this symbol:,bu,bu,ku,tsu,zu1,bu,What image represents the letter "bu",tsu,gu,pu,bu,bu
+2,fu,fu,What is the letter that represents this symbol:,fu,ru,zu2,fu,pu,fu,What image represents the letter "fu",pu,zu1,u,fu,fu
+3,gu,gu,What is the letter that represents this symbol:,gu,tsu,zu1,gu,zu2,gu,What image represents the letter "gu",ru,gu,tsu,zu2,gu
+4,ku,ku,What is the letter that represents this symbol:,ku,pu,ku,nu,ru,ku,What image represents the letter "ku",ku,u,zu1,gu,ku
+5,mu,mu,What is the letter that represents this symbol:,mu,nu,zu2,ku,mu,mu,What image represents the letter "mu",pu,tsu,mu,ru,mu
+6,nu,nu,What is the letter that represents this symbol:,nu,zu1,nu,tsu,mu,nu,What image represents the letter "nu",gu,mu,nu,zu2,nu
+7,pu,pu,What is the letter that represents this symbol:,pu,ku,ru,pu,zu2,pu,What image represents the letter "pu",zu1,pu,u,gu,pu
+8,ru,ru,What is the letter that represents this symbol:,ru,ru,pu,zu1,yu,ru,What image represents the letter "ru",ru,bu,tsu,pu,ru
+9,su,su,What is the letter that represents this symbol:,su,su,tsu,zu2,ku,su,What image represents the letter "su",mu,su,ru,zu1,su
+10,tsu,tsu,What is the letter that represents this symbol:,tsu,tsu,ru,zu1,pu,tsu,What image represents the letter "tsu",zu2,u,pu,tsu,tsu
+11,u,u,What is the letter that represents this symbol:,u,nu,zu2,mu,u,u,What image represents the letter "u",tsu,gu,u,mu,u
+12,yu,yu,What is the letter that represents this symbol:,yu,zu1,yu,ku,ru,yu,What image represents the letter "yu",ru,pu,yu,zu1,yu
+13,zu1,zu1,What is the letter that represents this symbol:,zu1,tsu,zu1,zu2,yu,zu1,What image represents the letter "zu1",zu1,u,zu2,tsu,zu1
+14,zu2,zu2,What is the letter that represents this symbol:,zu2,pu,mu,zu2,tsu,zu2,What image represents the letter "zu2",gu,zu1,zu2,pu,zu2

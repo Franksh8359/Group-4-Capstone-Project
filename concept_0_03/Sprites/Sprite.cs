@@ -5,7 +5,7 @@ namespace concept_0_03
 {
     public class Sprite : Component
     {
-        public Texture2D _texture;
+        public Texture2D Texture;
 
         public Vector2 Position;
 
@@ -16,18 +16,18 @@ namespace concept_0_03
 
         public Rectangle Rectangle
         {
-            get { return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height); }
+            get { return new Rectangle((int)Position.X, (int)Position.Y, Texture.Width, Texture.Height); }
 
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Position, Colour);
+            spriteBatch.Draw(Texture, Position, Colour);
         }
 
         public Sprite(Texture2D texture)
         {
-            _texture = texture;
+            Texture = texture;
         }
 
         public override void Update(GameTime gameTime)
@@ -38,7 +38,7 @@ namespace concept_0_03
 
         #region Collision
 
-        protected bool isTouchingLeft(Sprite sprite)
+        protected bool IsTouchingLeft(Sprite sprite)
         {
             return this.Rectangle.Right + this.Velocity.X > sprite.Rectangle.Left &&
                 this.Rectangle.Left < sprite.Rectangle.Left &&
@@ -46,7 +46,7 @@ namespace concept_0_03
                 this.Rectangle.Top < sprite.Rectangle.Bottom;
         }
 
-        protected bool isTouchingRight(Sprite sprite)
+        protected bool IsTouchingRight(Sprite sprite)
         {
             return this.Rectangle.Left + this.Velocity.X < sprite.Rectangle.Right &&
                 this.Rectangle.Right > sprite.Rectangle.Right &&
@@ -54,7 +54,7 @@ namespace concept_0_03
                 this.Rectangle.Top < sprite.Rectangle.Bottom;
         }
 
-        protected bool isTouchingTop(Sprite sprite)
+        protected bool IsTouchingTop(Sprite sprite)
         {
             return this.Rectangle.Bottom + this.Velocity.Y > sprite.Rectangle.Top &&
                 this.Rectangle.Top < sprite.Rectangle.Top &&
@@ -62,7 +62,7 @@ namespace concept_0_03
                 this.Rectangle.Left < sprite.Rectangle.Right;
         }
 
-        protected bool isTouchingBottom(Sprite sprite)
+        protected bool IsTouchingBottom(Sprite sprite)
         {
             return this.Rectangle.Top + this.Velocity.Y < sprite.Rectangle.Bottom &&
                 this.Rectangle.Bottom > sprite.Rectangle.Bottom &&

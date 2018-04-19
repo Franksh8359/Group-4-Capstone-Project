@@ -1,0 +1,14 @@
+1,a,a,What is the letter that represents this symbol:,a,a,da,ha,pa,a,What image represents the letter "a",a,ba,da,ga,a
+2,ba,ba,What is the letter that represents this symbol:,ba,a,ba,ra,wa,ba,What image represents the letter "ba",ya,ba,da,ta,ba
+3,da,da,What is the letter that represents this symbol:,da,da,sa,pa,ta,da,What image represents the letter "da",ga,pa,da,na,da
+4,ga,ga,What is the letter that represents this symbol:,ga,za,pa,ga,sa,ga,What image represents the letter "ga",ga,da,ya,wa,ga
+5,ha,ha,What is the letter that represents this symbol:,ha,ra,ha,a,wa,ha,What image represents the letter "ha",ta,pa,ga,ha,ha
+6,ka,ka,What is the letter that represents this symbol:,ka,na,ka,za,sa,ka,What image represents the letter "ka",ka,da,ya,na,ka
+7,na,na,What is the letter that represents this symbol:,na,pa,ta,ga,na,na,What image represents the letter "na",wa,ga,na,ta,na
+8,pa,pa,What is the letter that represents this symbol:,pa,ta,pa,ra,a,pa,What image represents the letter "pa",pa,ga,ya,wa,pa
+9,ra,ra,What is the letter that represents this symbol:,ra,ra,a,za,wa,ra,What image represents the letter "ra",ya,ra,da,na,ra
+10,sa,sa,What is the letter that represents this symbol:,sa,ga,pa,sa,na,sa,What image represents the letter "sa",pa,sa,ga,ta,sa
+11,ta,ta,What is the letter that represents this symbol:,ta,za,ra,wa,ta,ta,What image represents the letter "ta",da,na,ta,pa,ta
+12,wa,wa,What is the letter that represents this symbol:,wa,a,ta,sa,wa,wa,What image represents the letter "wa",wa,ya,za,ga,wa
+13,ya,ya,What is the letter that represents this symbol:,ya,za,ya,pa,ra,ya,What image represents the letter "ya",pa,da,ta,ya,ya
+14,za,za,What is the letter that represents this symbol:,za,wa,a,za,ta,za,What image represents the letter "za",da,ta,ya,za,za

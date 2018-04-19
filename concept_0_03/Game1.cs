@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 
 namespace concept_0_03
 {
@@ -8,10 +9,40 @@ namespace concept_0_03
     {
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+
         public static Texture2D activePlayerTexture;
+        public static Texture2D activePlayer_FightTexture;
+
+        public static SoundEffect currentSong;
+        public static SoundEffectInstance currentInstance;
+
+        #region Song Variables
+        
+        // might be needed
+
+        #endregion
 
         private IGameScreenManager m_screenManager;
-        
+
+        public enum GameState
+        {
+            STARTUP,
+            RUNNING,
+            PAUSED,
+            LOADING,
+            IN_FIGHT
+        }
+
+        public enum AudioState
+        {
+            PLAYING,
+            PAUSED,
+            OFF
+        }
+
+        public static GameState m_gameState;
+        public static AudioState m_audioState;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this)
@@ -23,6 +54,9 @@ namespace concept_0_03
             graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
+            m_gameState = GameState.STARTUP;
+            m_audioState = AudioState.OFF;
+
         }
         
         protected override void LoadContent()
@@ -31,12 +65,14 @@ namespace concept_0_03
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             activePlayerTexture = Content.Load<Texture2D>("Player/player01_Front");
+            
 
             // TODO: use this.Content to load your game content here
             m_screenManager = new GameScreenManager(spriteBatch, Content);
             m_screenManager.OnGameExit += Exit;
 
             m_screenManager.ChangeScreen(new MenuScreen(m_screenManager));
+
         }
 
         protected override void UnloadContent()

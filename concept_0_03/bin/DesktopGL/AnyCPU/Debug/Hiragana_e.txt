@@ -1,0 +1,12 @@
+1,be,be,What is the letter that represents this symbol:,be,de,be,ne,re,be,What image represents the letter "be"?,be,de,ke,se,be
+2,de,de,What is the letter that represents this symbol:,de,ge,te,de,me,de,What image represents the letter "de"?,me,de,se,pe,de
+3,ge,ge,What is the letter that represents this symbol:,ge,ge,ze,se,ke,ge,What image represents the letter "ge"?,he,ke,ge,me,ge
+4,he,he,What is the letter that represents this symbol:,he,be,he,pe,de,he,What image represents the letter "he"?,pe,ke,de,he,he
+5,ke,ke,What is the letter that represents this symbol:,ke,me,se,re,ke,ke,What image represents the letter "ke"?,he,se,ke,me,ke
+6,me,me,What is the letter that represents this symbol:,me,de,pe,me,ke,me,What image represents the letter "me"?,pe,me,ne,re,me
+7,ne,ne,What is the letter that represents this symbol:,ne,te,ne,se,de,ne,What image represents the letter "ne"?,ne,ke,de,he,ne
+8,pe,pe,What is the letter that represents this symbol:,pe,pe,ze,ge,te,pe,What image represents the letter "pe"?,se,pe,ne,me,pe
+9,re,re,What is the letter that represents this symbol:,re,te,re,be,me,re,What image represents the letter "re"?,de,me,re,ke,re
+10,se,se,What is the letter that represents this symbol:,se,ze,ge,se,ke,se,What image represents the letter "se"?,se,pe,de,se,se
+11,te,te,What is the letter that represents this symbol:,te,be,te,ze,ge,te,What image represents the letter "te"?,se,he,te,ke,te
+12,ze,ze,What is the letter that represents this symbol:,ze,te,ge,me,ze,ze,What image represents the letter "ze"?,me,ze,de,pe,ze

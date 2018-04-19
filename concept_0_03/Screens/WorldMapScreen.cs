@@ -7,12 +7,14 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
 namespace concept_0_03
 {
     class WorldMapScreen : IGameScreen
     {
         private bool m_exitGame;
         private readonly IGameScreenManager m_ScreenManager;
+        private Command m_command;
 
         public bool IsPaused { get; private set; }
 
@@ -33,6 +35,7 @@ namespace concept_0_03
         #region Level Entrance and Player Variables
 
         private Player Player;
+        private Sprite Companion;
 
         #region Level Entrance Variables
         private LevelEntrance LevelOne;
@@ -48,11 +51,14 @@ namespace concept_0_03
         private LevelEntrance LevelEleven;
         #endregion
 
+        public int levelsUnlocked = 1;
+
         #endregion
 
         public WorldMapScreen(IGameScreenManager gameScreenManager)
         {
             m_ScreenManager = gameScreenManager;
+            m_command = new Command(m_ScreenManager);
 
             #region Timer Stuff
             
@@ -75,17 +81,39 @@ namespace concept_0_03
             click = content.Load<SoundEffect>("SFX/Select_Click");
 
             bgSong = content.Load<SoundEffect>("Music/Carpe Diem");
-            bgMusic = bgSong.CreateInstance();
 
-            bgMusic.IsLooped = true;
-            bgMusic.Volume = 0.5f;
-            bgMusic.Play();
+            #region Music
+
+            switch (Game1.m_audioState)
+            {
+                case Game1.AudioState.OFF:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    break;
+                case Game1.AudioState.PAUSED:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    break;
+                case Game1.AudioState.PLAYING:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    Game1.currentInstance.Play();
+                    break;
+            }
+
+            #endregion
 
             Sprite background = new Sprite(content.Load<Texture2D>("WorldMap/map"));
             Texture2D levelEntrance = content.Load<Texture2D>("WorldMap/levelEntrance");
 
-            Player = new Player(Game1.activePlayerTexture);
-            Player.playerCanMove = false;
+            Player = new Player(Game1.activePlayerTexture)
+            {
+                playerCanMove = false,
+                Position = new Vector2(-5, 240)
+            };
 
             #region Level Entrance Rendering
 
@@ -147,7 +175,10 @@ namespace concept_0_03
 
             #endregion
 
-            Player.Position = new Vector2(-5, 240);
+            Companion = new Sprite(content.Load<Texture2D>("NPCs/carl"))
+            {
+                Position = new Vector2(LevelOne.Position.X + 50, LevelOne.Position.Y + 2)
+            };
 
             m_components = new List<Component>()
             {
@@ -170,6 +201,7 @@ namespace concept_0_03
                 #endregion
 
                 Player,
+                Companion,
             };
         }
 
@@ -189,6 +221,52 @@ namespace concept_0_03
                 component.Update(gameTime);
 
             moveToNextLevel.Elapsed += MoveToNextLevel_Elapsed;
+
+            #region Move Companion to Current Locked Level
+
+            switch (levelsUnlocked)
+            {
+                case 0:
+                    break;
+                case 1:
+                    Companion.Position = new Vector2(LevelOne.Position.X + 50, LevelOne.Position.Y + 2);
+                    break;
+                case 2:
+                    Companion.Position = new Vector2(LevelTwo.Position.X - 50, LevelTwo.Position.Y + 2);
+                    break;
+                case 3:
+                    Companion.Position = new Vector2(LevelThree.Position.X + 50, LevelThree.Position.Y + 2);
+                    break;
+                case 4:
+                    Companion.Position = new Vector2(LevelFour.Position.X + 50, LevelFour.Position.Y + 2);
+                    break;
+                case 5:
+                    Companion.Position = new Vector2(LevelFive.Position.X + 50, LevelFive.Position.Y + 2);
+                    break;
+                case 6:
+                    Companion.Position = new Vector2(LevelSix.Position.X + 50, LevelSix.Position.Y + 2);
+                    break;
+                case 7:
+                    Companion.Position = new Vector2(LevelSeven.Position.X + 50, LevelSeven.Position.Y + 2);
+                    break;
+                case 8:
+                    Companion.Position = new Vector2(LevelEight.Position.X + 50, LevelEight.Position.Y + 2);
+                    break;
+                case 9:
+                    Companion.Position = new Vector2(LevelNine.Position.X + 50, LevelNine.Position.Y + 2);
+                    break;
+                case 10:
+                    Companion.Position = new Vector2(LevelTen.Position.X + 50, LevelTen.Position.Y + 2);
+                    break;
+                case 11:
+                    Companion.Position = new Vector2(LevelEleven.Position.X + 50, LevelEleven.Position.Y + 2);
+                    break;
+                case 12:
+                    break;
+
+            }
+
+            #endregion
         }
 
         private void MoveToNextLevel_Elapsed(object sender, ElapsedEventArgs e)
@@ -217,60 +295,14 @@ namespace concept_0_03
 
             if (keyboard.IsKeyDown(Keys.Back))
             {
-                bgMusic.Pause();
-                isMusicStopped = true;
-
-                m_ScreenManager.PushScreen(new OptionsScreen(m_ScreenManager));
+                m_command.OpenOptionsMenu(m_ScreenManager);
             }
 
             #region Enter Level
 
             if (keyboard.IsKeyDown(Keys.Enter))
             {
-                switch (currentLevel)
-                {
-                    case 0:
-                        break;
-                    case 1:
-                        bgMusic.Pause();
-                        isMusicStopped = true;
-
-                        m_ScreenManager.PushScreen(new LevelOneScreen(m_ScreenManager));
-                        break;
-                    case 2:
-
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
-                    case 5:
-
-                        break;
-                    case 6:
-
-                        break;
-                    case 7:
-
-                        break;
-                    case 8:
-
-                        break;
-                    case 9:
-
-                        break;
-                    case 10:
-
-                        break;
-                    case 11:
-
-                        break;
-                    case 12:
-
-                        break;
-                }
+                levelsUnlocked = m_command.EnterLevel(currentLevel, m_ScreenManager, levelsUnlocked);
             }
 
             #endregion
@@ -284,62 +316,62 @@ namespace concept_0_03
                         break;
                     case 1:
                         Player.Position = new Vector2(-5, 240);
-                        movePlayer(0);
+                        MovePlayer(0);
 
                         break;
                     case 2:
                         Player.Position = LevelOne.Position;
-                        movePlayer(1);
+                        MovePlayer(1);
 
                         break;
                     case 3:
                         Player.Position = LevelTwo.Position;
-                        movePlayer(2);
+                        MovePlayer(2);
 
                         break;
                     case 4:
                         Player.Position = LevelThree.Position;
-                        movePlayer(3);
+                        MovePlayer(3);
 
                         break;
                     case 5:
                         Player.Position = LevelFour.Position;
-                        movePlayer(4);
+                        MovePlayer(4);
 
                         break;
                     case 6:
                         Player.Position = LevelFive.Position;
-                        movePlayer(5);
+                        MovePlayer(5);
 
                         break;
                     case 7:
                         Player.Position = LevelSix.Position;
-                        movePlayer(6);
+                        MovePlayer(6);
 
                         break;
                     case 8:
                         Player.Position = LevelSeven.Position;
-                        movePlayer(7);
+                        MovePlayer(7);
 
                         break;
                     case 9:
                         Player.Position = LevelEight.Position;
-                        movePlayer(8);
+                        MovePlayer(8);
 
                         break;
                     case 10:
                         Player.Position = LevelNine.Position;
-                        movePlayer(9);
+                        MovePlayer(9);
 
                         break;
                     case 11:
                         Player.Position = LevelTen.Position;
-                        movePlayer(10);
+                        MovePlayer(10);
 
                         break;
                     case 12:
                         Player.Position = LevelEleven.Position;
-                        movePlayer(11);
+                        MovePlayer(11);
 
                         break;
 
@@ -355,57 +387,57 @@ namespace concept_0_03
                 {
                     case 0:
                         Player.Position = LevelOne.Position;
-                        movePlayer(1);
+                        MovePlayer(1);
 
                         break;
                     case 1:
                         Player.Position = LevelTwo.Position;
-                        movePlayer(2);
+                        MovePlayer(2);
 
                         break;
                     case 2:
                         Player.Position = LevelThree.Position;
-                        movePlayer(3);
+                        MovePlayer(3);
 
                         break;
                     case 3:
                         Player.Position = LevelFour.Position;
-                        movePlayer(4);
+                        MovePlayer(4);
 
                         break;
                     case 4:
                         Player.Position = LevelFive.Position;
-                        movePlayer(5);
+                        MovePlayer(5);
 
                         break;
                     case 5:
                         Player.Position = LevelSix.Position;
-                        movePlayer(6);
+                        MovePlayer(6);
 
                         break;
                     case 6:
                         Player.Position = LevelSeven.Position;
-                        movePlayer(7);
+                        MovePlayer(7);
 
                         break;
                     case 7:
                         Player.Position = LevelEight.Position;
-                        movePlayer(8);
+                        MovePlayer(8);
 
                         break;
                     case 8:
                         Player.Position = LevelNine.Position;
-                        movePlayer(9);
+                        MovePlayer(9);
 
                         break;
                     case 9:
                         Player.Position = LevelTen.Position;
-                        movePlayer(10);
+                        MovePlayer(10);
 
                         break;
                     case 10:
                         Player.Position = LevelEleven.Position;
-                        movePlayer(11);
+                        MovePlayer(11);
 
                         break;
                     case 11:
@@ -418,7 +450,7 @@ namespace concept_0_03
             #endregion
         }
 
-        private void movePlayer(int _newLevel)
+        private void MovePlayer(int _newLevel)
         {
             currentLevel = _newLevel;
 

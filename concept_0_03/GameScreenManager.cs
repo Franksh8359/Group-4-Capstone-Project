@@ -12,9 +12,8 @@ namespace concept_0_03
 
         private readonly SpriteBatch m_spriteBatch;
         private readonly ContentManager m_contentManager;
-
+        
         private readonly List<IGameScreen> m_gameScreens = new List<IGameScreen>();
-
 
         public GameScreenManager(SpriteBatch spriteBatch, ContentManager contentManager)
         {

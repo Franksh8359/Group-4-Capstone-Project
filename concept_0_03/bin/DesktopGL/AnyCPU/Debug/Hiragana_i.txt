@@ -1,0 +1,13 @@
+1,bi,bi,What is the letter that represents this symbol:,bi,shi,bi,chi,hi,bi,What image represents the letter "bi",bi,gi,hi,ki,bi
+2,chi,chi,What is the letter that represents this symbol:,chi,ji2,i,chi,gi,chi,What image represents the letter "chi",ji1,mi,chi,ni,chi
+3,gi,gi,What is the letter that represents this symbol:,gi,ji1,gi,shi,hi,gi,What image represents the letter "gi",chi,gi,ki,pi,gi
+4,hi,hi,What is the letter that represents this symbol:,hi,hi,chi,gi,ki,hi,What image represents the letter "hi",gi,ji2,chi,hi,hi
+5,i,i,What is the letter that represents this symbol:,i,shi,i,ji2,ji1,i,What image represents the letter "i",i,hi,ji1,gi,i
+6,ji1,ji1,What is the letter that represents this symbol:,ji1,chi,gi,ji1,shi,ji1,What image represents the letter "ji1",ki,chi,ji1,ji2,ji1
+7,ji2,ji2,What is the letter that represents this symbol:,ji2,hi,ji2,i,ji1,ji2,What image represents the letter "ji2",ji1,ji2,mi,pi,ji2
+8,ki,ki,What is the letter that represents this symbol:,ki,ni,chi,ki,mi,ki,What image represents the letter "ki",ni,ji2,gi,ki,ki
+9,mi,mi,What is the letter that represents this symbol:,mi,gi,shi,hi,mi,mi,What image represents the letter "mi",mi,hi,chi,ri,mi
+10,ni,ni,What is the letter that represents this symbol:,ni,ji2,i,ni,chi,ni,What image represents the letter "ni",gi,ji1,ni,pi,ni
+11,pi,pi,What is the letter that represents this symbol:,pi,shi,hi,gi,pi,pi,What image represents the letter "pi",ki,pi,mi,ji2,pi
+12,ri,ri,What is the letter that represents this symbol:,ri,i,gi,ri,ki,ri,What image represents the letter "ri",hi,chi,gi,ri,ri
+13,shi,shi,What is the letter that represents this symbol:,shi,shi,chi,hi,mi,shi,What image represents the letter "shi",shi,pi,ni,ri,shi

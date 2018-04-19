@@ -17,6 +17,8 @@ namespace concept_0_03.Stage
         private string stageBG; //ex: mountainsBG
         private string stageFG; //ex: brownFG
         private int timer; //ex: 120 (seconds)
+        private bool completed;
+        private bool unlocked;
 
         //this defines the character pools to use for the stage
         private List<string> charContent = new List<string> { }; //ex: "ka", "ki", "ku", "ke", "ko"
@@ -31,27 +33,41 @@ namespace concept_0_03.Stage
             foreach (string t in tag)
             {
                 Alphabet.JapChar result = hiraAlph.HiraList.Find(x => x.VowelSet == t);
-                
-                while (result != null)
+                if (result != null)
                 {
-                    hiraAlph.HiraList.Remove(result);
-                    currentSet.Add(result);
-                    result = hiraAlph.HiraList.Find(x => x.VowelSet == t);
-                    if (result == null) { break; }
                     hiraAlph.HiraList.Remove(result);
                     currentSet.Add(result);
                 }
 
+                while (result != null)
+                {
+                    
+                    result = hiraAlph.HiraList.Find(x => x.VowelSet == t);
+                    if (result != null) 
+                    {
+                        hiraAlph.HiraList.Remove(result);
+                        currentSet.Add(result);
+                    }
+                    
+                }
+
 
                 result = hiraAlph.HiraList.Find(x => x.ConsonantSet == t);
-                while (result != null)
+                if (result != null)
                 {
                     hiraAlph.HiraList.Remove(result);
                     currentSet.Add(result);
+                }
+                while (result != null)
+                {
+                    
                     result = hiraAlph.HiraList.Find(x => x.ConsonantSet == t);
-                    if (result == null) { break; }
-                    hiraAlph.HiraList.Remove(result);
-                    currentSet.Add(result);
+                    if (result != null)
+                    {
+                        hiraAlph.HiraList.Remove(result);
+                        currentSet.Add(result);
+                    }
+                    
                 }
             }
         }
@@ -66,5 +82,7 @@ namespace concept_0_03.Stage
         public int Timer { get { return timer; } set { timer = value; } }
         public List<string> CharContent { get { return charContent; } set { charContent = value; } }
         public List<Alphabet.JapChar> CurrentSet { get { return currentSet; } set { SetCurrentSet(charContent); } }
+        public bool Completed { get { return completed; } set { completed = value; } }
+        public bool Unlocked { get { return unlocked; } set { unlocked = value; } }
     }
 }

@@ -8,22 +8,81 @@ namespace concept_0_03
 {
     class Question
     {
-        string question;
-        string questionImageName;
-        string answer1;
-        string answer2;
-        string answer3;
-        string answer4;
-        string correctAnswer;
+        private string question;
+        private string questionImageName;
+        private string answer1;
+        private string answer2;
+        private string answer3;
+        private string answer4;
+        private string correctAnswer;
 
-        List<Alphabet.JapChar> questionSet = new List<Alphabet.JapChar> { };
+        private List<Alphabet.JapChar> questionSet = new List<Alphabet.JapChar> { };
+        private List<Alphabet.JapChar> finalSet = new List<Alphabet.JapChar> { };
 
-        int rng;
+        private int rng;
+
+        public Question(List<Alphabet.JapChar> currentSet)
+        {
+            List<int> rngList = new List<int> { };
+
+            //PICK FOUR NUMBERS AT RANDOM (UP TO THE COUNT OF THE MASTER LIST) AND ADD THEM TO THEIR OWN LIST
+            for (int i = 0; i < 4;)
+            {
+                rng = Rng(currentSet.Count);
+                if (!rngList.Contains(rng)) { rngList.Add(rng); i++; }
+            }
+
+            //FOR EACH OF THE FOUR NUMBERS, ADD THE CHARACTER AT THAT INDEX OF THE MASTER LIST TO THE QUESTIONSET
+            foreach (int i in rngList) { questionSet.Add(currentSet[i]); }
+
+            //CHOOSE A QUESTION FORMAT (coin flip)
+            int format = Rng(2);
+
+            //SET THE QUESTION AND ANSWER TO THE FIRST IN THE QUESTIONSET
+            if (format == 0) //(if the coin flip was heads, set ques in Japanese format)
+            {
+                question = questionSet[0].Japa;
+                correctAnswer = questionSet[0].Roma;
+            }
+            else //(if the coin flip was tails, set ques in English format)
+            {
+                question = questionSet[0].Roma;
+                correctAnswer = questionSet[0].Japa;
+            }
+
+            //SHUFFLE THE QUESTIONSET
+            int n = questionSet.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = Rng(n + 1);
+                Alphabet.JapChar value = questionSet[k];
+                questionSet[k] = questionSet[n];
+                questionSet[n] = value;
+            }
+
+            //DISTRIBUTE POSSIBLE ANSWERS BASED ON SHUFFLED SET (based on format)
+            if (format == 0)
+            {
+                answer1 = questionSet[0].Roma;
+                answer2 = questionSet[1].Roma;
+                answer3 = questionSet[2].Roma;
+                answer4 = questionSet[3].Roma;
+            }
+            else
+            {
+                answer1 = questionSet[0].Japa;
+                answer2 = questionSet[1].Japa;
+                answer3 = questionSet[2].Japa;
+                answer4 = questionSet[3].Japa;
+            }
+
+        }
 
         private int Rng(int count)
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());
-            int r = rand.Next(0, count);
+            int r = rand.Next(count);
             return r;
         }
 
@@ -33,30 +92,11 @@ namespace concept_0_03
             else { return false; }
         }
 
-        public Question(List<Alphabet.JapChar> currentSet)
+        private List<Alphabet.JapChar> CreateQuestionSet(List<Alphabet.JapChar> currentSet)
         {
+            
 
-            int setCount = currentSet.Count;
-
-            rng = Rng(setCount);
-            questionSet.Add(currentSet[rng]);
-
-            rng = Rng(setCount);
-            questionSet.Add(currentSet[rng]);
-
-            rng = Rng(setCount);
-            questionSet.Add(currentSet[rng]);
-
-            rng = Rng(setCount);
-            questionSet.Add(currentSet[rng]);
-
-            question = questionSet[0].Japa;
-            answer1 = questionSet[0].Roma;
-            answer2 = questionSet[1].Roma;
-            answer3 = questionSet[2].Roma;
-            answer4 = questionSet[3].Roma;
-            correctAnswer = questionSet[0].Roma;
-
+            return questionSet;
         }
 
         public string Quest { get { return question; } set { question = value; } }

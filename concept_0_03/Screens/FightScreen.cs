@@ -13,26 +13,34 @@ namespace concept_0_03
     {
         private bool m_exitGame;
         private readonly IGameScreenManager m_ScreenManager;
+
         private bool isMusicOn;
         private bool wasOptionsOpened;
+
+        private Stage.StageData stageData = new Stage.StageData(); //CREATE A NEW STAGEDATA LIST
 
         private List<Component> m_components;
         private SoundEffect click;
 
-        Stage.StageData stageData = new Stage.StageData();
-        //Combat combat = new Combat();
+        #region Question Variables
 
         private string optionOne;
         private string optionTwo;
         private string optionThree;
         private string optionFour;
         private string currentWord;
-        private string questionBeginning;
         private string questionWord;
+
+
+        #endregion
 
         private Text m_questionText;
         private Text m_eHealthText;
-        private int enemyHealth;
+        private Button answerButton1;
+        private Button answerButton2;
+        private Button answerButton3;
+        private Button answerButton4;
+        private int enemyHealth = 5;
         private string fullEnemyHealthText;
 
         #region Health Bar Variables
@@ -64,16 +72,12 @@ namespace concept_0_03
         private Timer canAnswerTimer = new Timer();
         private bool canAnswer = false;
 
-        public FightScreen(IGameScreenManager gameScreenManager, string stageID)
+        private string stageID;
+
+        private Sprite Player;
+
+        private void SetNewQuestion()
         {
-            m_ScreenManager = gameScreenManager;
-
-            stageData.SetStageData(stageID);
-
-            enemyHealth = stageData.EnemyHP;
-
-            //combat.SetCombat(playerHealth, stageData.EnemyHP);
-
             Question question = new Question(stageData.CurrentSet);
 
             questionWord = question.Quest;
@@ -85,8 +89,27 @@ namespace concept_0_03
 
             currentWord = question.CorrectAns;
 
+        }
+
+        public FightScreen(IGameScreenManager gameScreenManager, string stage_ID)
+        {
+            m_ScreenManager = gameScreenManager;
+
+            stageID = stage_ID;
+            stageData.SetStageData(stageID);
+
+            SetNewQuestion();
+
             canAnswerTimer.Interval = 400;
             canAnswerTimer.Start();
+        }
+
+        public FightScreen(IGameScreenManager gameScreenManager, string m_currentWord, string m_questionWord)
+        {
+            m_ScreenManager = gameScreenManager;
+
+            currentWord = m_currentWord;
+            questionWord = m_questionWord;
         }
 
         public void ChangeBetweenScreens()
@@ -103,7 +126,40 @@ namespace concept_0_03
             SpriteFont m_Japanese = content.Load<SpriteFont>("Fonts/Japanese");
             click = content.Load<SoundEffect>("SFX/Select_Click");
             bgSong = content.Load<SoundEffect>("Music/Reformat");
-            bgMusic = bgSong.CreateInstance();
+
+            Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
+            {
+                Position = new Vector2(0, 502)
+            };
+
+            Player = new Sprite(Game1.activePlayer_FightTexture)
+            {
+                Position = new Vector2(120, 325)
+            };
+
+            #region Music
+
+            switch (Game1.m_audioState)
+            {
+                case Game1.AudioState.OFF:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    break;
+                case Game1.AudioState.PAUSED:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    break;
+                case Game1.AudioState.PLAYING:
+                    Game1.currentInstance = bgSong.CreateInstance();
+
+                    Game1.currentInstance.IsLooped = true;
+                    Game1.currentInstance.Play();
+                    break;
+            }
+
+            #endregion
 
             #region Health Bar Textures
 
@@ -116,15 +172,15 @@ namespace concept_0_03
 
             #endregion
 
-            bgMusic.IsLooped = true;
-            bgMusic.Volume = 0.5f;
-            bgMusic.Play();
+            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgCloudsSmaller"))
+            {
+                Position = new Vector2(-100, -2)
+            };
 
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/" + stageData.StageBG));
-            screenBackground.Position = new Vector2(-100, -2);
-
-            var questionBackground = new Sprite(content.Load<Texture2D>("textboxes/textbox600x180"));
-            questionBackground.Position = new Vector2(100, 2);
+            var questionBackground = new Sprite(content.Load<Texture2D>("textboxes/textbox600x180"))
+            {
+                Position = new Vector2(100, 2)
+            };
 
             #region Enemy Health Rendering
             fullEnemyHealthText = "Enemy Health: " + enemyHealth;
@@ -136,8 +192,10 @@ namespace concept_0_03
             #endregion
             #region Enemy Health Bar
 
-            e_healthBarMain = new Sprite(fiveHearts);
-            e_healthBarMain.Position = m_eHealthPosition;
+            e_healthBarMain = new Sprite(fiveHearts)
+            {
+                Position = m_eHealthPosition
+            };
 
             #endregion
 
@@ -151,23 +209,24 @@ namespace concept_0_03
             #endregion
             #region Player Health Bar
 
-            p_healthBarMain = new Sprite(fiveHearts);
-            p_healthBarMain.Position = m_pHealthPosition;
+            p_healthBarMain = new Sprite(fiveHearts)
+            {
+                Position = m_pHealthPosition
+            };
 
             #endregion
 
             #region Question Rendering
-            questionBeginning = "Please translate: " + questionWord;
 
             Vector2 m_questionPosition = new Vector2(1, 20);
             Color m_questionColor = Color.Black;
 
-            m_questionText = new Text(questionBeginning, m_Japanese, m_questionPosition, m_questionColor);
+            m_questionText = new Text(questionWord, m_Japanese, m_questionPosition, m_questionColor);
             m_questionText.CenterHorizontal(800, 30);
             #endregion
 
             #region Answer Button 1
-            var answerButton1 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
+            answerButton1 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
                 Position = new Vector2(305, 200),
                 Text = optionOne,
@@ -176,7 +235,7 @@ namespace concept_0_03
             answerButton1.Click += AnswerButton1_Click;
             #endregion
             #region Answer Button 2
-            var answerButton2 = new Button(content.Load<Texture2D>("Menu/Blue/blue_button03"), m_Japanese)
+            answerButton2 = new Button(content.Load<Texture2D>("Menu/Blue/blue_button03"), m_Japanese)
             {
                 Position = new Vector2(205, 250),
                 Text = optionTwo,
@@ -185,7 +244,7 @@ namespace concept_0_03
             answerButton2.Click += AnswerButton2_Click;
             #endregion
             #region Answer Button 3
-            var answerButton3 = new Button(content.Load<Texture2D>("Menu/Blue/Blue_button03"), m_Japanese)
+            answerButton3 = new Button(content.Load<Texture2D>("Menu/Blue/Blue_button03"), m_Japanese)
             {
                 Position = new Vector2(405, 250),
                 Text = optionThree,
@@ -194,7 +253,7 @@ namespace concept_0_03
             answerButton3.Click += AnswerButton3_Click;
             #endregion
             #region Answer Button 4
-            var answerButton4 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
+            answerButton4 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
                 Position = new Vector2(305, 300),
                 Text = optionFour,
@@ -205,13 +264,15 @@ namespace concept_0_03
 
             m_components = new List<Component>()
             {
+
                 screenBackground,
                 questionBackground,
-
-                answerButton1,
+                 answerButton1,
                 answerButton2,
                 answerButton3,
                 answerButton4,
+                ground,
+                Player,
             };
         }
 
@@ -229,6 +290,7 @@ namespace concept_0_03
             {
                 playerHealth -= 1;
             }
+            SetNewQuestion();
         }
 
         private void Answer02_Pressed()
@@ -243,6 +305,7 @@ namespace concept_0_03
             {
                 playerHealth -= 1;
             }
+            SetNewQuestion();
         }
 
         private void Answer03_Pressed()
@@ -257,6 +320,7 @@ namespace concept_0_03
             {
                 playerHealth -= 1;
             }
+            SetNewQuestion();
         }
 
         private void Answer04_Pressed()
@@ -271,6 +335,7 @@ namespace concept_0_03
             {
                 playerHealth -= 1;
             }
+            SetNewQuestion();
         }
 
         private void AnswerButton1_Click(object sender, EventArgs e)
@@ -343,34 +408,39 @@ namespace concept_0_03
 
         public void Update(GameTime gameTime)
         {
+
             foreach (var component in m_components)
                 component.Update(gameTime);
 
-            Question question = new Question(stageData.CurrentSet);
-
             m_eHealthText.Message = "Enemy Health: " + enemyHealth;
             m_pHealthText.Message = "Player Health: " + playerHealth;
-            m_questionText.Message = "Quick, which character is \"" + questionWord  + "\"! ";
-            m_questionText.CenterHorizontal(800, 30);
+            m_questionText.Message = questionWord;
+            answerButton1.Text = optionOne;
+            answerButton2.Text = optionTwo;
+            answerButton3.Text = optionThree;
+            answerButton4.Text = optionFour;
+            m_questionText.CenterHorizontal(800, 30);   
 
             switch (enemyHealth)
             {
                 case 5:
                     break;
                 case 4:
-                    e_healthBarMain._texture = fourHearts;
+                    e_healthBarMain.Texture = fourHearts;
                     break;
                 case 3:
-                    e_healthBarMain._texture = threeHearts;
+                    e_healthBarMain.Texture = threeHearts;
                     break;
                 case 2:
-                    e_healthBarMain._texture = twoHearts;
+                    e_healthBarMain.Texture = twoHearts;
                     break;
                 case 1:
-                    e_healthBarMain._texture = oneHeart;
+                    e_healthBarMain.Texture = oneHeart;
                     break;
                 case 0:
-                    bgMusic.Stop();
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
+
                     m_ScreenManager.PopScreen();
                     break;
             }
@@ -380,19 +450,21 @@ namespace concept_0_03
                 case 5:
                     break;
                 case 4:
-                    p_healthBarMain._texture = fourHearts;
+                    p_healthBarMain.Texture = fourHearts;
                     break;
                 case 3:
-                    p_healthBarMain._texture = threeHearts;
+                    p_healthBarMain.Texture = threeHearts;
                     break;
                 case 2:
-                    p_healthBarMain._texture = twoHearts;
+                    p_healthBarMain.Texture = twoHearts;
                     break;
                 case 1:
-                    p_healthBarMain._texture = oneHeart;
+                    p_healthBarMain.Texture = oneHeart;
                     break;
                 case 0:
-                    bgMusic.Stop();
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
+
                     m_ScreenManager.ChangeScreen(new GameOverScreen(m_ScreenManager));
                     break;
             }
@@ -401,6 +473,7 @@ namespace concept_0_03
             {
                 canAnswerTimer.Elapsed += CanAnswerTimer_Elapsed;
             }
+
         }
 
         private void CanAnswerTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -445,25 +518,25 @@ namespace concept_0_03
             #region Answer on Button Press
             if (canAnswer)
             {
-                if (oldState.IsKeyUp(Keys.W) && keyboard.IsKeyDown(Keys.W))
+                if ((oldState.IsKeyUp(Keys.W) && keyboard.IsKeyDown(Keys.W)) || (oldState.IsKeyUp(Keys.Up) && keyboard.IsKeyDown(Keys.Up)))
                 {
                     Answer01_Pressed();
                     canAnswer = false;
                     canAnswerTimer.Start();
                 }
-                if (oldState.IsKeyUp(Keys.A) && keyboard.IsKeyDown(Keys.A))
+                if ((oldState.IsKeyUp(Keys.A) && keyboard.IsKeyDown(Keys.A)) || (oldState.IsKeyUp(Keys.Left) && keyboard.IsKeyDown(Keys.Left)))
                 {
                     Answer02_Pressed();
                     canAnswer = false;
                     canAnswerTimer.Start();
                 }
-                if (oldState.IsKeyUp(Keys.D) && keyboard.IsKeyDown(Keys.D))
+                if ((oldState.IsKeyUp(Keys.D) && keyboard.IsKeyDown(Keys.D)) || (oldState.IsKeyUp(Keys.Right) && keyboard.IsKeyDown(Keys.Right)))
                 {
                     Answer03_Pressed();
                     canAnswer = false;
                     canAnswerTimer.Start();
                 }
-                if (oldState.IsKeyUp(Keys.S) && keyboard.IsKeyDown(Keys.S))
+                if ((oldState.IsKeyUp(Keys.S) && keyboard.IsKeyDown(Keys.S)) || (oldState.IsKeyUp(Keys.Down) && keyboard.IsKeyDown(Keys.Down)))
                 {
                     Answer04_Pressed();
                     canAnswer = false;

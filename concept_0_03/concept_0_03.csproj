@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="Alphabet\HiraAlphabet.cs" />
     <Compile Include="Alphabet\JapChar.cs" />
-    <Compile Include="Combat.cs" />
+    <Compile Include="Alphabet\Question.cs" />
+    <Compile Include="Core\Command.cs" />
     <Compile Include="FillQuestionsListClass.cs" />
     <Compile Include="LetterClass.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -67,7 +68,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Alphabet\Question.cs" />
+    <Compile Include="Question1Class.cs" />
     <Compile Include="Question2Class.cs" />
     <Compile Include="QuestionDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,6 +83,7 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameScreenManager.cs" />
     <Compile Include="Interfaces.cs" />
+    <Compile Include="Screens\LevelTwoScreen.cs" />
     <Compile Include="Screens\OptionsScreen.cs" />
     <Compile Include="Screens\LevelOneScreen.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
@@ -93,8 +95,8 @@
     <Compile Include="Core\Text.cs" />
     <Compile Include="Core\Utility.cs" />
     <Compile Include="Screens\WorldMapScreen.cs" />
-    <Compile Include="Stage\StageData.cs" />
     <Compile Include="Stage\StageBuild.cs" />
+    <Compile Include="Stage\StageData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
