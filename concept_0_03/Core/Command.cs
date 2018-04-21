@@ -112,7 +112,11 @@ namespace concept_0_03
 
                     if (levelsUnlocked > 0)
                     {
-                        m_screenManager.PushScreen(new LevelOneScreen(m_screenManager));
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-1"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
                     }
 
                     if (levelsUnlocked == 1)
@@ -127,7 +131,7 @@ namespace concept_0_03
 
                     if (levelsUnlocked > 1)
                     {
-                        m_screenManager.PushScreen(new LevelTwoScreen(m_screenManager));
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-2"));
                     }
                     else
                     {
@@ -141,36 +145,197 @@ namespace concept_0_03
 
                     return levelsUnlocked;
                 case 3:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 2)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-3"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 3)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 4:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 3)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-4"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 4)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 5:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 4)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-5"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 5)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 6:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 5)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-6"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 6)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 7:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 6)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-7"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 7)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 8:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 7)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-8"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 8)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 9:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 8)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-9"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 9)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 10:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 9)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-10"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 10)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 11:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 10)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-11"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 11)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
                 case 12:
+                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                        Game1.currentInstance.Stop();
 
-                    break;
+                    if (levelsUnlocked > 11)
+                    {
+                        m_screenManager.PushScreen(new FightScreen(m_screenManager, "1-12"));
+                    }
+                    else
+                    {
+                        // display cannot enter level message???
+                    }
+
+                    if (levelsUnlocked == 12)
+                    {
+                        levelsUnlocked += 1;
+                    }
+
+                    return levelsUnlocked;
             }
+
 
             return levelsUnlocked;
         }

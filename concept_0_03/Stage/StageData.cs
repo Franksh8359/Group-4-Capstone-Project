@@ -17,9 +17,8 @@ namespace concept_0_03.Stage
                 EnemySprite = "wraith",
                 EnemyHP = 50,
                 StageBG = "bgMountainsSmaller",
-                StageFG = "", Timer = 65,
-                Completed = false,
-                Unlocked = true,
+                StageFG = "",
+                Timer = 65,
                 CharContent = {"vowel"} }, //requires 10 correct answers with room for ~10 errors
             new StageBuild {
                 ID = "1-2",
@@ -28,9 +27,8 @@ namespace concept_0_03.Stage
                 EnemySprite = "wraith",
                 EnemyHP = 70,
                 StageBG = "bgCloudsSmaller",
-                StageFG = "", Timer = 85,
-                Completed = false,
-                Unlocked = false,
+                StageFG = "",
+                Timer = 85,
                 CharContent = {"k", "g"} }, //requires 14 correct answers with room for ~14 errors
             new StageBuild {
                 ID = "1-3",
@@ -39,10 +37,100 @@ namespace concept_0_03.Stage
                 EnemySprite = "wraith",
                 EnemyHP = 70,
                 StageBG = "bgMountainsSmaller",
-                StageFG = "", Timer = 85,
-                Completed = false,
-                Unlocked = false,
+                StageFG = "",
+                Timer = 85,
                 CharContent = {"vowel", "g"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-4",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"t", "d"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-5",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"d", "s", "z"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-6",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"vowel", "k", "g", "t", "d", "s", "z"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-7",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"n", "m"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-8",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"h", "b", "p"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-9",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"vowel", "k", "t", "s", "h"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-10",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"y", "w", "m", "n"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-11",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"g", "d", "z", "p", "b"} }, //requires 14 correct answers with room for ~14 errors
+            new StageBuild {
+                ID = "1-12",
+                Name = "Tsuki Falls",
+                EnemyName = "Wraith",
+                EnemySprite = "wraith",
+                EnemyHP = 70,
+                StageBG = "bgMountainsSmaller",
+                StageFG = "",
+                Timer = 85,
+                CharContent = {"a", "i", "u", "e", "o"} }, //requires 14 correct answers with room for ~14 errors
+
 
         };
 

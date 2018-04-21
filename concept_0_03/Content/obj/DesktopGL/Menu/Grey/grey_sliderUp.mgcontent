@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/Menu/Grey/grey_sliderUp.png</SourceFile>
-  <SourceTime>2018-04-17T18:51:07.4575137-04:00</SourceTime>
-  <DestFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/bin/DesktopGL/Menu/Grey/grey_sliderUp.xnb</DestFile>
-  <DestTime>2018-04-18T18:27:30.7263921-04:00</DestTime>
+  <SourceFile>C:/Users/franksh8359/Documents/Group-4-Capstone-Project-master/Group-4-Capstone-Project-master/concept_0_03/Content/Menu/Grey/grey_sliderUp.png</SourceFile>
+  <SourceTime>2018-04-20T19:02:00.360373-04:00</SourceTime>
+  <DestFile>C:/Users/franksh8359/Documents/Group-4-Capstone-Project-master/Group-4-Capstone-Project-master/concept_0_03/Content/bin/DesktopGL/Menu/Grey/grey_sliderUp.xnb</DestFile>
+  <DestTime>2018-04-20T19:02:41.542373-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
