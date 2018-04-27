@@ -75,6 +75,7 @@ namespace concept_0_03
         private string stageID;
 
         private Sprite Player;
+        private Sprite Companion;
 
         private void SetNewQuestion()
         {
@@ -137,6 +138,11 @@ namespace concept_0_03
                 Position = new Vector2(120, 325)
             };
 
+            Companion = new Sprite(Game1.activeCompanion_FightTexture)
+            {
+                Position = new Vector2(25, 425)
+            };
+
             #region Music
 
             switch (Game1.m_audioState)
@@ -179,7 +185,7 @@ namespace concept_0_03
 
             var questionBackground = new Sprite(content.Load<Texture2D>("textboxes/textbox600x180"))
             {
-                Position = new Vector2(100, 2)
+                Position = new Vector2(100, 32)
             };
 
             #region Enemy Health Rendering
@@ -218,17 +224,17 @@ namespace concept_0_03
 
             #region Question Rendering
 
-            Vector2 m_questionPosition = new Vector2(1, 20);
+            Vector2 m_questionPosition = new Vector2(1, 70);
             Color m_questionColor = Color.Black;
 
             m_questionText = new Text(questionWord, m_Japanese, m_questionPosition, m_questionColor);
-            m_questionText.CenterHorizontal(800, 30);
+            m_questionText.CenterHorizontal(800, 80);
             #endregion
 
             #region Answer Button 1
             answerButton1 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
-                Position = new Vector2(305, 200),
+                Position = new Vector2(305, 230),
                 Text = optionOne,
             };
 
@@ -237,7 +243,7 @@ namespace concept_0_03
             #region Answer Button 2
             answerButton2 = new Button(content.Load<Texture2D>("Menu/Blue/blue_button03"), m_Japanese)
             {
-                Position = new Vector2(205, 250),
+                Position = new Vector2(205, 280),
                 Text = optionTwo,
             };
 
@@ -246,7 +252,7 @@ namespace concept_0_03
             #region Answer Button 3
             answerButton3 = new Button(content.Load<Texture2D>("Menu/Blue/Blue_button03"), m_Japanese)
             {
-                Position = new Vector2(405, 250),
+                Position = new Vector2(405, 280),
                 Text = optionThree,
             };
 
@@ -255,7 +261,7 @@ namespace concept_0_03
             #region Answer Button 4
             answerButton4 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
-                Position = new Vector2(305, 300),
+                Position = new Vector2(305, 330),
                 Text = optionFour,
             };
 
@@ -273,6 +279,7 @@ namespace concept_0_03
                 answerButton4,
                 ground,
                 Player,
+                Companion,
             };
         }
 
@@ -419,7 +426,7 @@ namespace concept_0_03
             answerButton2.Text = optionTwo;
             answerButton3.Text = optionThree;
             answerButton4.Text = optionFour;
-            m_questionText.CenterHorizontal(800, 30);   
+            m_questionText.CenterHorizontal(800, 50);   
 
             switch (enemyHealth)
             {
