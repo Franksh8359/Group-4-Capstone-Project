@@ -21,6 +21,17 @@ namespace concept_0_03
 
         private int rng;
 
+        public Question()
+        {
+            question = "";
+            questionImageName = "";
+            answer1 = "";
+            answer2 = "";
+            answer3 = "";
+            answer4 = "";
+            correctAnswer = "";
+        }
+
         public Question(List<Alphabet.JapChar> currentSet)
         {
             List<int> rngList = new List<int> { };

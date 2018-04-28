@@ -1250,8 +1250,6 @@ C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\textboxes\textbox620x400.xnb
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\WorldMap\levelEntrance.xnb
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\WorldMap\map.xnb
-C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\QuestionDatabase.mdf
-C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\QuestionDatabase_log.ldf
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\concept_0_03.exe
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\concept_0_03.pdb
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\MonoGame.Framework.dll
@@ -1422,3 +1420,5 @@ C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concep
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\obj\Debug\concept_0_03.exe
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\obj\Debug\concept_0_03.pdb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\NPCs\Carl_Fight.xnb
+C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\NPCs\Carl_Fight.xnb
+C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Health\health.xnb
