@@ -1409,8 +1409,6 @@ C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concep
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\block.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\map wip.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\standingGround.xnb
-C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\QuestionDatabase.mdf
-C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\QuestionDatabase_log.ldf
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\concept_0_03.exe.config
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\concept_0_03.exe
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\concept_0_03.pdb
@@ -1422,3 +1420,6 @@ C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concep
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\NPCs\Carl_Fight.xnb
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\NPCs\Carl_Fight.xnb
 C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-Project-master\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Health\health.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Health\health.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\BattleFX\enemyHit_Small.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\BattleFX\playerHit_Small.xnb

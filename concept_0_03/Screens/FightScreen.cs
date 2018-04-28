@@ -29,6 +29,16 @@ namespace concept_0_03
         private Timer canAnswerTimer = new Timer();
         private bool canAnswer = false;
 
+        #region Damage Displaying Variables
+
+        private Timer displayDamageImageTimer = new Timer();
+
+        private Sprite PlayerDamaged;
+        private Sprite EnemyDamaged;
+        private bool DamageTaken = false;
+
+        #endregion
+
         private Stage.StageData stageData = new Stage.StageData(); //CREATE A NEW STAGEDATA LIST
         private string stageID;
         private Question lastQuest = new Question();
@@ -94,8 +104,12 @@ namespace concept_0_03
 
             SetNewQuestion();
 
+            // SET ANSWER DELAY TIMER + START
             canAnswerTimer.Interval = 400;
             canAnswerTimer.Start();
+
+            // SET DAMAGE DISPLAY TIMER
+            displayDamageImageTimer.Interval = 500;
         }
 
         public FightScreen(IGameScreenManager gameScreenManager, string m_currentWord, string m_questionWord)
@@ -186,6 +200,22 @@ namespace concept_0_03
             Vector2 m_timerPosition = new Vector2(750, 5);
             m_TimerText = new Text(cdTimer.ToString(), m_Japanese, m_timerPosition, m_questionColor);
 
+            #region Damage Displaying
+
+            PlayerDamaged = new Sprite(content.Load<Texture2D>("BattleFX/playerHit_Small"))
+            {
+                Colour = Color.Transparent,
+                Position = new Vector2(60, 270)
+            };
+
+            EnemyDamaged = new Sprite(content.Load<Texture2D>("BattleFX/enemyHit_Small"))
+            {
+                Colour = Color.Transparent,
+                Position = new Vector2(520, 270)
+            };
+
+            #endregion
+
             #region Answer Button 1
             answerButton1 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
@@ -228,13 +258,18 @@ namespace concept_0_03
 
                 screenBackground,
                 questionBackground,
-                 answerButton1,
+
+                answerButton1,
                 answerButton2,
                 answerButton3,
                 answerButton4,
+
                 ground,
                 Player,
                 Companion,
+
+                PlayerDamaged,
+                EnemyDamaged,
             };
         }
 
@@ -313,13 +348,19 @@ namespace concept_0_03
             if (ans == currentWord)
             {
                 enemyHealth -= 5;
+
+                EnemyDamaged.Colour = new Color(255, 255, 255, 255);
             }
             else
             {
                 playerHealth -= 5;
                 cdTimer -= 3;
+
+                PlayerDamaged.Colour = new Color(255, 255, 255, 255);
             }
             SetNewQuestion();
+
+            DamageTaken = true;
         }
 
         public void Pause()
@@ -359,6 +400,14 @@ namespace concept_0_03
                 canAnswerTimer.Elapsed += CanAnswerTimer_Elapsed;
             }
 
+            // SET TO TRUE AFTER EACH TURN, DISPLAYS WHOEVER LOST HEALTH
+            if (DamageTaken == true)
+            {
+                displayDamageImageTimer.Start();
+
+                displayDamageImageTimer.Elapsed += DisplayDamageImageTimer_Elapsed;
+            }
+
             //UPDATE TIMER
             cdTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             m_TimerText.Message = cdTimer.ToString("0");
@@ -376,6 +425,14 @@ namespace concept_0_03
                     m_ScreenManager.PopScreen();
             }
 
+        }
+
+        private void DisplayDamageImageTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            PlayerDamaged.Colour = Color.Transparent;
+            EnemyDamaged.Colour = Color.Transparent;
+
+            DamageTaken = false;
         }
 
         private void CanAnswerTimer_Elapsed(object sender, ElapsedEventArgs e)
