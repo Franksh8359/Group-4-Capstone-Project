@@ -61,6 +61,7 @@
     <Compile Include="Alphabet\JapChar.cs" />
     <Compile Include="Alphabet\Question.cs" />
     <Compile Include="Core\Command.cs" />
+    <Compile Include="Screens\GalleryScreen.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

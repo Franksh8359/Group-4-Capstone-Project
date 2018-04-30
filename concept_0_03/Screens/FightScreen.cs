@@ -80,6 +80,27 @@ namespace concept_0_03
         //SPRITES
         private Sprite Player;
         private Sprite Companion;
+        private Sprite Enemy;
+        #region Enemy Texture List
+
+        private Texture2D activeEnemyTexture;
+
+        private Texture2D greenSlime;
+        private Texture2D pinkSlime;
+        private Texture2D blueSlime;
+        private Texture2D tinySlimes;
+
+        private Texture2D blueWisp;
+        private Texture2D whiteWisp;
+        private Texture2D orangeWisp;
+
+        private Texture2D aobozu;
+        private Texture2D betobetosan;
+        private Texture2D hellhound;
+        private Texture2D oni;
+        private Texture2D pixies;
+
+        #endregion
 
         //QUESTION
         private Text m_questionText;
@@ -139,20 +160,52 @@ namespace concept_0_03
             pHPBarBG = new Rectangle(pHPBarXPos - 3, hpBarYPos - 3, 256, 36);
             eHPBarBG = new Rectangle(eHPBarXPos - 3, hpBarYPos - 3, 256, 36);
 
-            Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
-            {
-                Position = new Vector2(0, 502)
-            };
-
+            #region Sprite Displaying
             Player = new Sprite(Game1.activePlayer_FightTexture)
             {
                 Position = new Vector2(120, 325)
             };
-
             Companion = new Sprite(Game1.activeCompanion_FightTexture)
             {
                 Position = new Vector2(25, 425)
             };
+
+            #region Enemy Textures
+
+            #region Slimes
+            greenSlime = content.Load<Texture2D>("Enemies/Slimes/greenSlime");
+            pinkSlime = content.Load<Texture2D>("Enemies/Slimes/pinkSlime");
+            blueSlime = content.Load<Texture2D>("Enemies/Slimes/blueSlime");
+            tinySlimes = content.Load<Texture2D>("Enemies/Slimes/tinySlimes");
+            #endregion
+            
+            #region Wisps
+            blueWisp = content.Load<Texture2D>("Enemies/Wisps/blueWisp");
+            whiteWisp = content.Load<Texture2D>("Enemies/Wisps/whiteWisp");
+            orangeWisp = content.Load<Texture2D>("Enemies/Wisps/orangeWisp");
+
+            #endregion
+
+            #region Other Enemies
+
+            aobozu = content.Load<Texture2D>("Enemies/aobozu");
+            betobetosan = content.Load<Texture2D>("Enemies/betobetosan");
+            hellhound = content.Load<Texture2D>("Enemies/hellhound");
+            oni = content.Load<Texture2D>("Enemies/oni");
+            pixies = content.Load<Texture2D>("Enemies/pixies");
+
+            #endregion
+
+            #endregion
+
+            Enemy = new Sprite(content.Load<Texture2D>("Enemies/enemyPlaceholder"))
+            {
+                Position = new Vector2(555, 310)
+            };
+
+            // SET ENEMY SPRITE
+            SetEnemyTexture(stageData.EnemySprite);
+            #endregion
 
             #region Music
 
@@ -178,11 +231,14 @@ namespace concept_0_03
 
             #endregion
 
+            Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
+            {
+                Position = new Vector2(0, 502)
+            };
             var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgCloudsSmaller"))
             {
                 Position = new Vector2(-100, -2)
             };
-
             var questionBackground = new Sprite(content.Load<Texture2D>("textboxes/textbox600x180"))
             {
                 Position = new Vector2(100, 32)
@@ -205,13 +261,13 @@ namespace concept_0_03
             PlayerDamaged = new Sprite(content.Load<Texture2D>("BattleFX/playerHit_Small"))
             {
                 Colour = Color.Transparent,
-                Position = new Vector2(60, 270)
+                Position = new Vector2(60, 280)
             };
 
             EnemyDamaged = new Sprite(content.Load<Texture2D>("BattleFX/enemyHit_Small"))
             {
                 Colour = Color.Transparent,
-                Position = new Vector2(520, 270)
+                Position = new Vector2(515, 310)
             };
 
             #endregion
@@ -267,6 +323,7 @@ namespace concept_0_03
                 ground,
                 Player,
                 Companion,
+                Enemy,
 
                 PlayerDamaged,
                 EnemyDamaged,
@@ -393,7 +450,7 @@ namespace concept_0_03
             answerButton2.Text = optionTwo;
             answerButton3.Text = optionThree;
             answerButton4.Text = optionFour;
-            m_questionText.CenterHorizontal(800, 100);   
+            m_questionText.CenterHorizontal(800, 100);
 
             if (canAnswer == false)
             {
@@ -438,6 +495,51 @@ namespace concept_0_03
         private void CanAnswerTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             canAnswer = true;
+        }
+
+        private void SetEnemyTexture(string enemy)
+        {
+            switch (enemy)
+            {
+                case "greenSlime":
+                    Enemy.Texture = greenSlime;
+                    break;
+                case "pinkSlime":
+                    Enemy.Texture = pinkSlime;
+                    break;
+                case "blueSlime":
+                    Enemy.Texture = blueSlime;
+                    break;
+                case "tinySlimes":
+                    Enemy.Texture = tinySlimes;
+                    break;
+
+                case "whiteWisp":
+                    Enemy.Texture = whiteWisp;
+                    break;
+                case "blueWisp":
+                    Enemy.Texture = blueWisp;
+                    break;
+                case "orangeWisp":
+                    Enemy.Texture = orangeWisp;
+                    break;
+
+                case "aobozu":
+                    Enemy.Texture = aobozu;
+                    break;
+                case "betobetosan":
+                    Enemy.Texture = betobetosan;
+                    break;
+                case "hellhound":
+                    Enemy.Texture = hellhound;
+                    break;
+                case "oni":
+                    Enemy.Texture = oni;
+                    break;
+                case "pixies":
+                    Enemy.Texture = pixies;
+                    break;
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)

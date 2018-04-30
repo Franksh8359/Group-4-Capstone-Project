@@ -1423,3 +1423,16 @@ C:\Users\franksh8359\Documents\Group-4-Capstone-Project-master\Group-4-Capstone-
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Health\health.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\BattleFX\enemyHit_Small.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\BattleFX\playerHit_Small.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Wisps\blueWisp.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Wisps\orangeWisp.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Wisps\whiteWisp.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Slimes\blueSlime.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Slimes\greenSlime.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Slimes\pinkSlime.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\Slimes\tinySlimes.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\aobozu.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\betobetosan.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\hellhound.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\oni.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\pixies.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\enemyPlaceholder.xnb
