@@ -1436,3 +1436,5 @@ C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concep
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\oni.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\pixies.xnb
 C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\Enemies\enemyPlaceholder.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\WorldMap\map2.xnb
+C:\Users\MattedCrow\Documents\GitHub\HollyBranch\Group-4-Capstone-Project\concept_0_03\bin\DesktopGL\AnyCPU\Debug\Content\WorldMap\map3.xnb
