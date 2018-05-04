@@ -49,6 +49,9 @@ namespace concept_0_03
             gameOver.CenterHorizontal(800, 150);
             #endregion
 
+            // Background
+            var background = new Sprite(content.Load<Texture2D>("BGs/bgGameOver"));
+
             #region Button Variables
 
             var buttonTexture = content.Load<Texture2D>("Menu/Grey/grey_button04");
@@ -80,6 +83,7 @@ namespace concept_0_03
 
             m_components = new List<Component>()
             {
+                background,
                 menuButton,
                 quitGameButton,
             };

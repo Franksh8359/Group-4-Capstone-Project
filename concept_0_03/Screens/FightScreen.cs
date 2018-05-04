@@ -26,8 +26,21 @@ namespace concept_0_03
         private SoundEffectInstance bgMusic;
         private KeyboardState oldState;
 
+        #region Timer for Key Input Delay
+
         private Timer canAnswerTimer = new Timer();
         private bool canAnswer = false;
+
+        #endregion
+
+        #region End Fight Variables
+
+        private Timer fightWonTimer = new Timer();
+        private bool fightWon = false;
+        private bool fightWonTimerStarted = false;
+        private bool canPopFight = false;
+
+        #endregion
 
         #region Damage Displaying Variables
 
@@ -125,12 +138,17 @@ namespace concept_0_03
 
             SetNewQuestion();
 
+            #region Various Timer Initalization
             // SET ANSWER DELAY TIMER + START
             canAnswerTimer.Interval = 400;
             canAnswerTimer.Start();
 
             // SET DAMAGE DISPLAY TIMER
             displayDamageImageTimer.Interval = 500;
+
+            // SET FIGHTWON TIMER
+            fightWonTimer.Interval = 3000;
+            #endregion
         }
 
         public FightScreen(IGameScreenManager gameScreenManager, string m_currentWord, string m_questionWord)
@@ -465,23 +483,68 @@ namespace concept_0_03
                 displayDamageImageTimer.Elapsed += DisplayDamageImageTimer_Elapsed;
             }
 
-            //UPDATE TIMER
-            cdTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            m_TimerText.Message = cdTimer.ToString("0");
+            //UPDATE TIMER, WHILE FIGHT IS ACTIVE
+            if (fightWon == false)
+            {
+                cdTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                m_TimerText.Message = cdTimer.ToString("0");
+            }
+
             //IF TIMER REACHES 0, PUSH GAMEOVER SCREEN
-            if (cdTimer <= 0) { Gameover(); }
+            if (cdTimer <= 0)
+            {
+                Gameover();
+            }
+
             //UPDATE HEALTH BARS
             playerHPBar = new Rectangle(pHPBarXPos, hpBarYPos, (playerHealth * hpBarLength) / playerMaxHealth, hpBarWidth);
             enemyHPBar = new Rectangle(eHPBarXPos, hpBarYPos, (enemyHealth * hpBarLength) / enemyMaxHealth, hpBarWidth);
+
             //IF PLAYER HEALTH REACHES 0, PUSH GAMEOVER SCREEN
-            if (playerHealth <= 0) { Gameover(); }
-            //IF ENEMY HEALTH REACHES 0, POP THE WORLD MAP SCREEN & UNLOCK NEW LEVEL
-            if (enemyHealth <= 0) {
-                if (Game1.m_audioState == Game1.AudioState.PLAYING)
-                    Game1.currentInstance.Stop();
-                    m_ScreenManager.PopScreen();
+            if (playerHealth <= 0)
+            {
+                Gameover();
             }
 
+            //IF ENEMY HEALTH REACHES 0, POP THE WORLD MAP SCREEN & UNLOCK NEW LEVEL
+            if (enemyHealth <= 0)
+            {
+                fightWon = true;
+            }
+
+            //IF FIGHTWON IS TRUE, DO FIGHT END STUFF
+            if (fightWon == true)
+            {
+                // KEY DROP HERE
+
+                m_questionText.Message = "Enemy defeated! Let's keep going!";
+                m_questionText.CenterHorizontal(800,100);
+
+                // START TIMER IF TIMER HASN'T STARTED
+                if (fightWonTimerStarted == false)
+                {
+                    fightWonTimer.Start();
+
+                    fightWonTimerStarted = true;
+                }
+
+                fightWonTimer.Elapsed += FightWonTimer_Elapsed;
+
+                if (canPopFight == true) // POP THE SCREEN AFTER TIMER HAS ELAPSED (HAS TO BE IN UPDATE)
+                {
+                    m_ScreenManager.PopScreen();
+                }
+            }
+        }
+
+        private void FightWonTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            // AUDIO
+            if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                Game1.currentInstance.Stop();
+
+            // SET CANPOP VARIABLE TO TRUE
+            canPopFight = true;
         }
 
         private void DisplayDamageImageTimer_Elapsed(object sender, ElapsedEventArgs e)
