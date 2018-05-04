@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/MattedCrow/Documents/GitHub/HollyBranch/Group-4-Capstone-Project/concept_0_03/Content/WorldMap/map3.png</SourceFile>
-  <SourceTime>2018-04-30T16:21:47.1648327-04:00</SourceTime>
+  <SourceTime>2018-05-03T13:24:53.5089724-04:00</SourceTime>
   <DestFile>C:/Users/MattedCrow/Documents/GitHub/HollyBranch/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/WorldMap/map3.xnb</DestFile>
-  <DestTime>2018-04-30T20:32:16.7065976-04:00</DestTime>
+  <DestTime>2018-05-03T15:18:48.6754066-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

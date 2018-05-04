@@ -218,10 +218,10 @@ namespace concept_0_03
 
             #endregion
             #endregion
-            #region World Two -- UNPOSITIONED
+            #region World Two
             #region Level One
 
-            LevelTwelve = new LevelEntrance(levelEntrance, new Vector2(73, 70), "2-1")
+            LevelTwelve = new LevelEntrance(levelEntrance, new Vector2(20, 85), "2-1")
             {
                 Colour = Color.Transparent
             };
@@ -229,7 +229,7 @@ namespace concept_0_03
             #endregion
             #region Level Two
 
-            LevelThirteen = new LevelEntrance(levelEntrance, new Vector2(185, 174), "2-2")
+            LevelThirteen = new LevelEntrance(levelEntrance, new Vector2(77, 242), "2-2")
             {
                 Colour = Color.Transparent
             };
@@ -237,7 +237,7 @@ namespace concept_0_03
             #endregion
             #region Level Three
 
-            LevelFourteen = new LevelEntrance(levelEntrance, new Vector2(110, 365), "2-3")
+            LevelFourteen = new LevelEntrance(levelEntrance, new Vector2(187, 124), "2-3")
             {
                 Colour = Color.Transparent
             };
@@ -245,7 +245,7 @@ namespace concept_0_03
             #endregion
             #region Level Four
 
-            LevelFifteen = new LevelEntrance(levelEntrance, new Vector2(235, 505), "2-4")
+            LevelFifteen = new LevelEntrance(levelEntrance, new Vector2(186, 345), "2-4")
             {
                 Colour = Color.Transparent
             };
@@ -253,7 +253,7 @@ namespace concept_0_03
             #endregion
             #region Level Five
 
-            LevelSixteen = new LevelEntrance(levelEntrance, new Vector2(295, 363), "2-5")
+            LevelSixteen = new LevelEntrance(levelEntrance, new Vector2(270, 505), "2-5")
             {
                 Colour = Color.Transparent
             };
@@ -261,7 +261,7 @@ namespace concept_0_03
             #endregion
             #region Level Six
 
-            LevelSeventeen = new LevelEntrance(levelEntrance, new Vector2(400, 272), "2-6")
+            LevelSeventeen = new LevelEntrance(levelEntrance, new Vector2(405, 433), "2-6")
             {
                 Colour = Color.Transparent
             };
@@ -269,7 +269,7 @@ namespace concept_0_03
             #endregion
             #region Level Seven
 
-            LevelEighteen = new LevelEntrance(levelEntrance, new Vector2(389, 125), "2-7")
+            LevelEighteen = new LevelEntrance(levelEntrance, new Vector2(361, 221), "2-7")
             {
                 Colour = Color.Transparent
             };
@@ -277,7 +277,7 @@ namespace concept_0_03
             #endregion
             #region Level Eight
 
-            LevelNineteen = new LevelEntrance(levelEntrance, new Vector2(515, 50), "2-8")
+            LevelNineteen = new LevelEntrance(levelEntrance, new Vector2(518, 245), "2-8")
             {
                 Colour = Color.Transparent
             };
@@ -285,7 +285,7 @@ namespace concept_0_03
             #endregion
             #region Level Nine
 
-            LevelTwenty = new LevelEntrance(levelEntrance, new Vector2(618, 148), "2-9")
+            LevelTwenty = new LevelEntrance(levelEntrance, new Vector2(623, 392), "2-9")
             {
                 Colour = Color.Transparent
             };
@@ -293,7 +293,7 @@ namespace concept_0_03
             #endregion
             #region Level Ten
 
-            LevelTwentyOne = new LevelEntrance(levelEntrance, new Vector2(600, 311), "2-10")
+            LevelTwentyOne = new LevelEntrance(levelEntrance, new Vector2(661, 200), "2-10")
             {
                 Colour = Color.Transparent
             };
@@ -301,17 +301,17 @@ namespace concept_0_03
             #endregion
             #region Level Eleven
 
-            LevelTwentyTwo = new LevelEntrance(levelEntrance, new Vector2(683, 479), "2-11")
+            LevelTwentyTwo = new LevelEntrance(levelEntrance, new Vector2(738, 10), "2-11")
             {
                 Colour = Color.Transparent
             };
 
             #endregion
             #endregion
-            #region World Three -- UNPOSITIONED
+            #region World Three
             #region Level One
 
-            LevelTwentyThree = new LevelEntrance(levelEntrance, new Vector2(73, 70), "3-1")
+            LevelTwentyThree = new LevelEntrance(levelEntrance, new Vector2(25, 485), "3-1")
             {
                 Colour = Color.Transparent
             };
@@ -319,7 +319,7 @@ namespace concept_0_03
             #endregion
             #region Level Two
 
-            LevelTwentyFour = new LevelEntrance(levelEntrance, new Vector2(185, 174), "3-2")
+            LevelTwentyFour = new LevelEntrance(levelEntrance, new Vector2(50, 325), "3-2")
             {
                 Colour = Color.Transparent
             };
@@ -327,7 +327,7 @@ namespace concept_0_03
             #endregion
             #region Level Three
 
-            LevelTwentyFive = new LevelEntrance(levelEntrance, new Vector2(110, 365), "3-3")
+            LevelTwentyFive = new LevelEntrance(levelEntrance, new Vector2(30, 120), "3-3")
             {
                 Colour = Color.Transparent
             };
@@ -335,7 +335,7 @@ namespace concept_0_03
             #endregion
             #region Level Four
 
-            LevelTwentySix = new LevelEntrance(levelEntrance, new Vector2(235, 505), "3-4")
+            LevelTwentySix = new LevelEntrance(levelEntrance, new Vector2(190, 47), "3-4")
             {
                 Colour = Color.Transparent
             };
@@ -343,7 +343,7 @@ namespace concept_0_03
             #endregion
             #region Level Five
 
-            LevelTwentySeven = new LevelEntrance(levelEntrance, new Vector2(295, 363), "3-5")
+            LevelTwentySeven = new LevelEntrance(levelEntrance, new Vector2(335, 135), "3-5")
             {
                 Colour = Color.Transparent
             };
@@ -351,7 +351,7 @@ namespace concept_0_03
             #endregion
             #region Level Six
 
-            LevelTwentyEight = new LevelEntrance(levelEntrance, new Vector2(400, 272), "3-6")
+            LevelTwentyEight = new LevelEntrance(levelEntrance, new Vector2(287, 268), "3-6")
             {
                 Colour = Color.Transparent
             };
@@ -359,7 +359,7 @@ namespace concept_0_03
             #endregion
             #region Level Seven
 
-            LevelTwentyNine = new LevelEntrance(levelEntrance, new Vector2(389, 125), "3-7")
+            LevelTwentyNine = new LevelEntrance(levelEntrance, new Vector2(217, 384), "3-7")
             {
                 Colour = Color.Transparent
             };
@@ -367,7 +367,7 @@ namespace concept_0_03
             #endregion
             #region Level Eight
 
-            LevelThirty = new LevelEntrance(levelEntrance, new Vector2(515, 50), "3-8")
+            LevelThirty = new LevelEntrance(levelEntrance, new Vector2(375, 505), "3-8")
             {
                 Colour = Color.Transparent
             };
@@ -375,7 +375,7 @@ namespace concept_0_03
             #endregion
             #region Level Nine
 
-            LevelThirtyOne = new LevelEntrance(levelEntrance, new Vector2(618, 148), "3-9")
+            LevelThirtyOne = new LevelEntrance(levelEntrance, new Vector2(510, 420), "3-9")
             {
                 Colour = Color.Transparent
             };
@@ -383,7 +383,7 @@ namespace concept_0_03
             #endregion
             #region Level Ten
 
-            LevelThirtyTwo = new LevelEntrance(levelEntrance, new Vector2(600, 311), "3-10")
+            LevelThirtyTwo = new LevelEntrance(levelEntrance, new Vector2(505, 234), "3-10")
             {
                 Colour = Color.Transparent
             };
@@ -391,7 +391,7 @@ namespace concept_0_03
             #endregion
             #region Level Eleven
 
-            LevelThirtyThree = new LevelEntrance(levelEntrance, new Vector2(683, 479), "3-11")
+            LevelThirtyThree = new LevelEntrance(levelEntrance, new Vector2(610, 90), "3-11")
             {
                 Colour = Color.Transparent
             };
@@ -399,14 +399,12 @@ namespace concept_0_03
             #endregion
             #region Level Twelve
 
-            LevelThirtyFour = new LevelEntrance(levelEntrance, new Vector2(700, 490), "3-12")
+            LevelThirtyFour = new LevelEntrance(levelEntrance, new Vector2(750, 250), "3-12")
             {
                 Colour = Color.Transparent
             };
             #endregion
-
             #endregion
-
             #endregion
 
             Companion = new Sprite(content.Load<Texture2D>("NPCs/carl"))
@@ -497,63 +495,63 @@ namespace concept_0_03
                 #endregion
                 #region World Two
                 case 12:
-                    Companion.Position = new Vector2(LevelTwelve.Position.X - 50, LevelTwelve.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwelve.Position.X + 50, LevelTwelve.Position.Y + 2);
                     break;
                 case 13:
                     Companion.Position = new Vector2(LevelThirteen.Position.X - 50, LevelThirteen.Position.Y + 2);
                     break;
                 case 14:
-                    Companion.Position = new Vector2(LevelFourteen.Position.X - 50, LevelFourteen.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelFourteen.Position.X, LevelFourteen.Position.Y + 52);
                     break;
                 case 15:
-                    Companion.Position = new Vector2(LevelFifteen.Position.X - 50, LevelFifteen.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelFifteen.Position.X - 5, LevelFifteen.Position.Y - 52);
                     break;
                 case 16:
-                    Companion.Position = new Vector2(LevelSixteen.Position.X - 50, LevelSixteen.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelSixteen.Position.X, LevelSixteen.Position.Y - 50);
                     break;
                 case 17:
-                    Companion.Position = new Vector2(LevelSeventeen.Position.X - 50, LevelSeventeen.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelSeventeen.Position.X - 50, LevelSeventeen.Position.Y - 50);
                     break;
                 case 18:
                     Companion.Position = new Vector2(LevelEighteen.Position.X - 50, LevelEighteen.Position.Y + 2);
                     break;
                 case 19:
-                    Companion.Position = new Vector2(LevelNineteen.Position.X - 50, LevelNineteen.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelNineteen.Position.X, LevelNineteen.Position.Y + 52);
                     break;
                 case 20:
-                    Companion.Position = new Vector2(LevelTwenty.Position.X - 50, LevelTwenty.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwenty.Position.X, LevelTwenty.Position.Y - 52);
                     break;
                 case 21:
                     Companion.Position = new Vector2(LevelTwentyOne.Position.X - 50, LevelTwentyOne.Position.Y + 2);
                     break;
                 case 22:
-                    Companion.Position = new Vector2(LevelTwentyTwo.Position.X - 50, LevelTwentyTwo.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentyTwo.Position.X, LevelTwentyTwo.Position.Y + 50);
                     break;
                 #endregion
                 #region World Three
                 case 23:
-                    Companion.Position = new Vector2(LevelTwentyThree.Position.X - 50, LevelTwentyThree.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentyThree.Position.X - 2, LevelTwentyThree.Position.Y + 50);
                     break;
                 case 24:
-                    Companion.Position = new Vector2(LevelTwentyFour.Position.X - 50, LevelTwentyFour.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentyFour.Position.X + 50, LevelTwentyFour.Position.Y + 2);
                     break;
                 case 25:
-                    Companion.Position = new Vector2(LevelTwentyFive.Position.X - 50, LevelTwentyFive.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentyFive.Position.X + 50, LevelTwentyFive.Position.Y + 2);
                     break;
                 case 26:
-                    Companion.Position = new Vector2(LevelTwentySix.Position.X - 50, LevelTwentySix.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentySix.Position.X + 50, LevelTwentySix.Position.Y + 2);
                     break;
                 case 27:
-                    Companion.Position = new Vector2(LevelTwentySeven.Position.X - 50, LevelTwentySeven.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentySeven.Position.X + 50, LevelTwentySeven.Position.Y + 2);
                     break;
                 case 28:
-                    Companion.Position = new Vector2(LevelTwentyEight.Position.X - 50, LevelTwentyEight.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelTwentyEight.Position.X + 50, LevelTwentyEight.Position.Y + 2);
                     break;
                 case 29:
                     Companion.Position = new Vector2(LevelTwentyNine.Position.X - 50, LevelTwentyNine.Position.Y + 2);
                     break;
                 case 30:
-                    Companion.Position = new Vector2(LevelThirty.Position.X - 50, LevelThirty.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelThirty.Position.X + 2, LevelThirty.Position.Y - 52);
                     break;
                 case 31:
                     Companion.Position = new Vector2(LevelThirtyOne.Position.X - 50, LevelThirtyOne.Position.Y + 2);
@@ -562,10 +560,10 @@ namespace concept_0_03
                     Companion.Position = new Vector2(LevelThirtyTwo.Position.X - 50, LevelThirtyTwo.Position.Y + 2);
                     break;
                 case 33:
-                    Companion.Position = new Vector2(LevelThirtyThree.Position.X - 50, LevelThirtyThree.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelThirtyThree.Position.X, LevelThirtyThree.Position.Y + 52);
                     break;
                 case 34:
-                    Companion.Position = new Vector2(LevelThirtyFour.Position.X - 50, LevelThirtyFour.Position.Y + 2);
+                    Companion.Position = new Vector2(LevelThirtyFour.Position.X - 50, LevelThirtyFour.Position.Y - 2);
                     break;
 
                 #endregion
