@@ -33,6 +33,7 @@ namespace concept_0_03
             {
                 return new Rectangle((int)Position.X, (int)Position.Y, _texture.Width, _texture.Height);
             }
+            
         }
 
         public string Text { get; set; }

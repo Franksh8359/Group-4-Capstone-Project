@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/Menu/Red/red_panel.png</SourceFile>
-  <SourceTime>2018-04-17T18:51:07.5908679-04:00</SourceTime>
-  <DestFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/bin/DesktopGL/Menu/Red/red_panel.xnb</DestFile>
-  <DestTime>2018-04-18T18:27:30.7775285-04:00</DestTime>
+  <SourceFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/Menu/Red/red_panel.png</SourceFile>
+  <SourceTime>2018-04-20T19:13:23.4894104-04:00</SourceTime>
+  <DestFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/Menu/Red/red_panel.xnb</DestFile>
+  <DestTime>2018-04-20T19:26:53.336731-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

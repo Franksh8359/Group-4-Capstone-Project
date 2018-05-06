@@ -104,8 +104,6 @@ namespace concept_0_03
         {
             switch (currentLevel)
             {
-                case 0:
-                    break;
                 case 1:
                     if (Game1.m_audioState == Game1.AudioState.PLAYING)
                         Game1.currentInstance.Stop();
@@ -194,13 +192,11 @@ namespace concept_0_03
 
         #endregion
 
-        #region Load Game -- Not implementated
+        #region Gallery Button
 
         public void LoadGame(IGameScreenManager m_screenManager)
         {
-            // Load Game Code would go here, currently non-functional
-
-            Console.WriteLine("Load Game");
+            m_screenManager.PushScreen(new KeyGallery(m_screenManager));
         }
 
         #endregion

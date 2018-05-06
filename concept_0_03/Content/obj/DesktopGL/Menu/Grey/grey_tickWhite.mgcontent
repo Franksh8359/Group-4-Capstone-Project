@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/Menu/Grey/grey_tickWhite.png</SourceFile>
-  <SourceTime>2018-04-17T18:51:07.4805752-04:00</SourceTime>
-  <DestFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/bin/DesktopGL/Menu/Grey/grey_tickWhite.xnb</DestFile>
-  <DestTime>2018-04-18T18:27:30.7334107-04:00</DestTime>
+  <SourceFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/Menu/Grey/grey_tickWhite.png</SourceFile>
+  <SourceTime>2018-04-20T19:13:23.3684035-04:00</SourceTime>
+  <DestFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/Menu/Grey/grey_tickWhite.xnb</DestFile>
+  <DestTime>2018-04-20T19:26:52.5386854-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

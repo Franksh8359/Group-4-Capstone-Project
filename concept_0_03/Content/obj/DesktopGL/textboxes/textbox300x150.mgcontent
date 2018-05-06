@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/textboxes/textbox300x150.png</SourceFile>
-  <SourceTime>2018-04-17T18:51:12.0537761-04:00</SourceTime>
-  <DestFile>C:/Users/Mio/Downloads/Merge/Group-4-Capstone-Project-/concept_0_03/Content/bin/DesktopGL/textboxes/textbox300x150.xnb</DestFile>
-  <DestTime>2018-04-18T18:27:38.0499593-04:00</DestTime>
+  <SourceFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/textboxes/textbox300x150.png</SourceFile>
+  <SourceTime>2018-04-20T19:13:41.7044523-04:00</SourceTime>
+  <DestFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/textboxes/textbox300x150.xnb</DestFile>
+  <DestTime>2018-04-20T19:27:26.5976335-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

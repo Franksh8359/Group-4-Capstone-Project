@@ -11,6 +11,8 @@ namespace concept_0_03
 {
     class FightScreen : IGameScreen
     {
+        // 250, 30
+
         private bool m_exitGame;
         private readonly IGameScreenManager m_ScreenManager;
 
@@ -125,7 +127,7 @@ namespace concept_0_03
             SpriteFont m_font = content.Load<SpriteFont>("Fonts/Font");
             SpriteFont m_Japanese = content.Load<SpriteFont>("Fonts/Japanese");
             click = content.Load<SoundEffect>("SFX/Select_Click");
-            bgSong = content.Load<SoundEffect>("Music/Reformat");
+            bgSong = content.Load<SoundEffect>("Music/Final Fantasy VIII - Only A Plank Between One and Perdition [HQ]");
 
             Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
             {
