@@ -65,7 +65,7 @@ namespace concept_0_03
             Game1.m_audioState = Game1.AudioState.PLAYING;
             Game1.currentInstance.Play();
 
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountainsSmaller"))
+            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountains"))
             {
                 Position = new Vector2(-100, -2)
             };

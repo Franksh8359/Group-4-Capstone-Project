@@ -10,6 +10,7 @@ namespace concept_0_03.Stage
     {
 
         private string id;  //ex: 2-1
+        private string alphabet; //ex: kata
         private string name; //ex: Tsuki Mountain
         private string enemyName; //ex: Panda-sama
         private string enemySprite; //ex: Panda-sama
@@ -28,43 +29,47 @@ namespace concept_0_03.Stage
 
         public void SetCurrentSet(List<string> tag)
         {
-            Alphabet.HiraAlphabet hiraAlph = new Alphabet.HiraAlphabet();
+
+            Alphabet.JapChar alpha;
+
+            if (alphabet == "hira") { alpha = new Alphabet.HiraAlphabet(); }
+            else { alpha = new Alphabet.KataAlphabet(); }
 
             foreach (string t in tag)
             {
-                Alphabet.JapChar result = hiraAlph.HiraList.Find(x => x.VowelSet == t);
+                Alphabet.JapChar result = alpha.CharList.Find(x => x.VowelSet == t);
                 if (result != null)
                 {
-                    hiraAlph.HiraList.Remove(result);
+                    alpha.CharList.Remove(result);
                     currentSet.Add(result);
                 }
 
                 while (result != null)
                 {
                     
-                    result = hiraAlph.HiraList.Find(x => x.VowelSet == t);
+                    result = alpha.CharList.Find(x => x.VowelSet == t);
                     if (result != null) 
                     {
-                        hiraAlph.HiraList.Remove(result);
+                        alpha.CharList.Remove(result);
                         currentSet.Add(result);
                     }
                     
                 }
 
 
-                result = hiraAlph.HiraList.Find(x => x.ConsonantSet == t);
+                result = alpha.CharList.Find(x => x.ConsonantSet == t);
                 if (result != null)
                 {
-                    hiraAlph.HiraList.Remove(result);
+                    alpha.CharList.Remove(result);
                     currentSet.Add(result);
                 }
                 while (result != null)
                 {
                     
-                    result = hiraAlph.HiraList.Find(x => x.ConsonantSet == t);
+                    result = alpha.CharList.Find(x => x.ConsonantSet == t);
                     if (result != null)
                     {
-                        hiraAlph.HiraList.Remove(result);
+                        alpha.CharList.Remove(result);
                         currentSet.Add(result);
                     }
                     
@@ -73,6 +78,7 @@ namespace concept_0_03.Stage
         }
 
         public string ID { get { return id; } set { id = value; } }
+        public string Alphabet { get { return alphabet; } set { alphabet = value; } }
         public string Name { get { return name; } set { name = value; } }
         public string EnemyName { get { return enemyName; } set { enemyName = value; } }
         public string EnemySprite { get { return enemySprite; } set { enemySprite = value; } }

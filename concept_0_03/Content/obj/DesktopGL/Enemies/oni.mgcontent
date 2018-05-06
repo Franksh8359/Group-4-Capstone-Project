@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<<<<<<< HEAD:concept_0_03/Content/obj/DesktopGL/BGs/bgMountainsSmaller.mgcontent
+  <SourceFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/BGs/bgMountainsSmaller.png</SourceFile>
+  <SourceTime>2018-04-20T19:13:22.6793641-04:00</SourceTime>
+  <DestFile>C:/Users/User/Documents/GitHub/G4CP/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/BGs/bgMountainsSmaller.xnb</DestFile>
+  <DestTime>2018-04-20T19:27:26.1556082-04:00</DestTime>
+=======
+  <SourceFile>C:/Users/Mio/Downloads/Group-4-Capstone-Project-5-5/Group-4-Capstone-Project-master/concept_0_03/Content/Enemies/oni.png</SourceFile>
+  <SourceTime>2018-05-05T14:04:08.6068319-04:00</SourceTime>
+  <DestFile>C:/Users/Mio/Downloads/Group-4-Capstone-Project-5-5/Group-4-Capstone-Project-master/concept_0_03/Content/bin/DesktopGL/Enemies/oni.xnb</DestFile>
+  <DestTime>2018-05-05T14:04:50.9784671-04:00</DestTime>
+>>>>>>> 3032d6c9289b5ef4a1b4396a2dd010cc613d4b86:concept_0_03/Content/obj/DesktopGL/Enemies/oni.mgcontent
+  <Importer>TextureImporter</Importer>
+  <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
+  <Processor>TextureProcessor</Processor>
+  <ProcessorTime>2017-03-01T10:05:36-05:00</ProcessorTime>
+  <Parameters>
+    <Key>ColorKeyColor</Key>
+    <Value>255,0,255,255</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ColorKeyEnabled</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>GenerateMipmaps</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>ResizeToPowerOfTwo</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>MakeSquare</Key>
+    <Value>False</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Color</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

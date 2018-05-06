@@ -10,8 +10,18 @@ namespace concept_0_03
         GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
+        #region Traveling Textures
+        // KEEPS CURRENT PLAYER
         public static Texture2D activePlayerTexture;
         public static Texture2D activePlayer_FightTexture;
+
+        // KEEPS CURRENT COMPANION
+        public static Texture2D activeCompanionTexture;
+        public static Texture2D activeCompanion_FightTexture;
+
+        // KEEPS CURRENT ENEMY
+        public static Texture2D activeEnemyTexture;
+        #endregion
 
         public static SoundEffect currentSong;
         public static SoundEffectInstance currentInstance;
@@ -65,7 +75,9 @@ namespace concept_0_03
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             activePlayerTexture = Content.Load<Texture2D>("Player/player01_Front");
-            
+
+            activeCompanionTexture = Content.Load<Texture2D>("NPCs/carl");
+            activeCompanion_FightTexture = Content.Load<Texture2D>("NPCs/Carl_Fight");
 
             // TODO: use this.Content to load your game content here
             m_screenManager = new GameScreenManager(spriteBatch, Content);

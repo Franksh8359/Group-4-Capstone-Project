@@ -57,25 +57,23 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Alphabet\KataAlphabet.cs" />
     <Compile Include="Alphabet\HiraAlphabet.cs" />
     <Compile Include="Alphabet\JapChar.cs" />
     <Compile Include="Alphabet\Question.cs" />
     <Compile Include="Core\Command.cs" />
+<<<<<<< HEAD
     <Compile Include="FillQuestionsListClass.cs" />
     <Compile Include="KeyClass.cs" />
     <Compile Include="KeyInventory.cs" />
     <Compile Include="LetterClass.cs" />
+=======
+    <Compile Include="Screens\GalleryScreen.cs" />
+>>>>>>> 3032d6c9289b5ef4a1b4396a2dd010cc613d4b86
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Question1Class.cs" />
-    <Compile Include="Question2Class.cs" />
-    <Compile Include="QuestionDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuestionDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Screens\GameOverScreen.cs" />
     <Compile Include="Screens\CharacterSelectionScreen.cs" />
@@ -85,8 +83,11 @@
     <Compile Include="Game1.cs" />
     <Compile Include="GameScreenManager.cs" />
     <Compile Include="Interfaces.cs" />
+<<<<<<< HEAD
     <Compile Include="Screens\KeyGallery.cs" />
     <Compile Include="Screens\LevelTwoScreen.cs" />
+=======
+>>>>>>> 3032d6c9289b5ef4a1b4396a2dd010cc613d4b86
     <Compile Include="Screens\OptionsScreen.cs" />
     <Compile Include="Screens\LevelOneScreen.cs" />
     <Compile Include="Screens\MenuScreen.cs" />
@@ -167,26 +168,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="QuestionDatabaseDataSet.xsc">
-      <DependentUpon>QuestionDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QuestionDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QuestionDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuestionDatabaseDataSet.xss">
-      <DependentUpon>QuestionDatabaseDataSet.xsd</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="QuestionDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="QuestionDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>QuestionDatabase.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

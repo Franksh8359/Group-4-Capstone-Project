@@ -19,10 +19,46 @@ namespace concept_0_03
         private bool isMusicOn;
         private bool wasOptionsOpened;
 
-        private Stage.StageData stageData = new Stage.StageData(); //CREATE A NEW STAGEDATA LIST
-
         private List<Component> m_components;
         private SoundEffect click;
+
+        public bool IsPaused { get; private set; }
+
+        private SoundEffect bgSong;
+        private SoundEffectInstance bgMusic;
+        private KeyboardState oldState;
+
+        #region Timer for Key Input Delay
+
+        private Timer canAnswerTimer = new Timer();
+        private bool canAnswer = false;
+
+        #endregion
+
+        #region End Fight Variables
+
+        private Timer fightWonTimer = new Timer();
+        private bool fightWon = false;
+        private bool fightWonTimerStarted = false;
+        private bool canPopFight = false;
+
+        #endregion
+
+        #region Damage Displaying Variables
+
+        private Timer displayDamageImageTimer = new Timer();
+
+        private Sprite PlayerDamaged;
+        private Sprite EnemyDamaged;
+        private bool DamageTaken = false;
+
+        #endregion
+
+        private Stage.StageData stageData = new Stage.StageData(); //CREATE A NEW STAGEDATA LIST
+        private string stageID;
+        private Question lastQuest = new Question();
+        private string bgName;
+        float cdTimer = 0;
 
         #region Question Variables
 
@@ -36,74 +72,94 @@ namespace concept_0_03
 
         #endregion
 
+        #region UI Variables
+        
+        private Text m_TimerText;
+
+        //HEALTH BARS
+        private Rectangle playerHPBar;
+        private Rectangle enemyHPBar;
+        private Rectangle pHPBarBG;
+        private Rectangle eHPBarBG;
+        private Texture2D HPTexture;
+
+        private int hpBarYPos = 560;
+        private int pHPBarXPos = 10;
+        private int eHPBarXPos = 540;
+        private int hpBarLength = 250;
+        private int hpBarWidth = 30;
+        private int enemyHealth = 0;
+        private int playerHealth = 50;
+        private int enemyMaxHealth = 0;
+        private int playerMaxHealth = 50;
+
+        //cCOMBO BAR
+        private Rectangle comboBarBG;
+        private Rectangle comboBar;
+
+        private bool comboDamage = false;
+        private int comboGauge = 0;
+
+        //SPRITES
+        private Sprite Player;
+        private Sprite Companion;
+        private Sprite Enemy;
+        #region Enemy Texture List
+
+        private Texture2D activeEnemyTexture;
+
+        private Texture2D greenSlime;
+        private Texture2D pinkSlime;
+        private Texture2D blueSlime;
+        private Texture2D tinySlimes;
+
+        private Texture2D blueWisp;
+        private Texture2D whiteWisp;
+        private Texture2D orangeWisp;
+
+        private Texture2D aobozu;
+        private Texture2D betobetosan;
+        private Texture2D hellhound;
+        private Texture2D oni;
+        private Texture2D pixies;
+
+        #endregion
+
+        //QUESTION
         private Text m_questionText;
-        private Text m_eHealthText;
         private Button answerButton1;
         private Button answerButton2;
         private Button answerButton3;
         private Button answerButton4;
-        private int enemyHealth = 5;
-        private string fullEnemyHealthText;
-
-        #region Health Bar Variables
-
-        private Sprite e_healthBarBack;
-        private Sprite e_healthBarMain;
-        private Sprite p_healthBarBack;
-        private Sprite p_healthBarMain;
-
-        private Texture2D fiveHearts;
-        private Texture2D fourHearts;
-        private Texture2D threeHearts;
-        private Texture2D twoHearts;
-        private Texture2D oneHeart;
-        private Texture2D zeroHearts;
-
         #endregion
-
-        private Text m_pHealthText;
-        private int playerHealth = 5;
-        private string fullPlayerHealthText;
-
-        public bool IsPaused { get; private set; }
-
-        private SoundEffect bgSong;
-        private SoundEffectInstance bgMusic;
-        private KeyboardState oldState;
-
-        private Timer canAnswerTimer = new Timer();
-        private bool canAnswer = false;
-
-        private string stageID;
-
-        private Sprite Player;
-
-        private void SetNewQuestion()
-        {
-            Question question = new Question(stageData.CurrentSet);
-
-            questionWord = question.Quest;
-
-            optionOne = question.Ans1;
-            optionTwo = question.Ans2;
-            optionThree = question.Ans3;
-            optionFour = question.Ans4;
-
-            currentWord = question.CorrectAns;
-
-        }
 
         public FightScreen(IGameScreenManager gameScreenManager, string stage_ID)
         {
             m_ScreenManager = gameScreenManager;
 
+            //SET STAGE ID
             stageID = stage_ID;
+            //SET THE STAGE DATA
             stageData.SetStageData(stageID);
+            //SET BATTLE SPRITES, QUESTIONS, TIMER, ETC
+            cdTimer = stageData.Timer;
+            enemyHealth = stageData.EnemyHP;
+            enemyMaxHealth = stageData.EnemyHP;
+            bgName = "BGs/" + stageData.StageBG;
 
             SetNewQuestion();
 
+            #region Various Timer Initalization
+            // SET ANSWER DELAY TIMER + START
             canAnswerTimer.Interval = 400;
             canAnswerTimer.Start();
+
+            // SET DAMAGE DISPLAY TIMER
+            displayDamageImageTimer.Interval = 500;
+
+            // SET FIGHTWON TIMER
+            fightWonTimer.Interval = 3000;
+            #endregion
         }
 
         public FightScreen(IGameScreenManager gameScreenManager, string m_currentWord, string m_questionWord)
@@ -129,15 +185,57 @@ namespace concept_0_03
             click = content.Load<SoundEffect>("SFX/Select_Click");
             bgSong = content.Load<SoundEffect>("Music/Final Fantasy VIII - Only A Plank Between One and Perdition [HQ]");
 
-            Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
-            {
-                Position = new Vector2(0, 502)
-            };
+            HPTexture = content.Load<Texture2D>("Health/health");
+            pHPBarBG = new Rectangle(pHPBarXPos - 3, hpBarYPos - 3, 256, 36);
+            eHPBarBG = new Rectangle(eHPBarXPos - 3, hpBarYPos - 3, 256, 36);
+            comboBarBG = new Rectangle(213, 5, 375, 21);
 
+            #region Sprite Displaying
             Player = new Sprite(Game1.activePlayer_FightTexture)
             {
                 Position = new Vector2(120, 325)
             };
+            Companion = new Sprite(Game1.activeCompanion_FightTexture)
+            {
+                Position = new Vector2(25, 425)
+            };
+
+            #region Enemy Textures
+
+            #region Slimes
+            greenSlime = content.Load<Texture2D>("Enemies/Slimes/greenSlime");
+            pinkSlime = content.Load<Texture2D>("Enemies/Slimes/pinkSlime");
+            blueSlime = content.Load<Texture2D>("Enemies/Slimes/blueSlime");
+            tinySlimes = content.Load<Texture2D>("Enemies/Slimes/tinySlimes");
+            #endregion
+            
+            #region Wisps
+            blueWisp = content.Load<Texture2D>("Enemies/Wisps/blueWisp");
+            whiteWisp = content.Load<Texture2D>("Enemies/Wisps/whiteWisp");
+            orangeWisp = content.Load<Texture2D>("Enemies/Wisps/orangeWisp");
+
+            #endregion
+
+            #region Other Enemies
+
+            aobozu = content.Load<Texture2D>("Enemies/aobozu");
+            betobetosan = content.Load<Texture2D>("Enemies/betobetosan");
+            hellhound = content.Load<Texture2D>("Enemies/hellhound");
+            oni = content.Load<Texture2D>("Enemies/oni");
+            pixies = content.Load<Texture2D>("Enemies/pixies");
+
+            #endregion
+
+            #endregion
+
+            Enemy = new Sprite(content.Load<Texture2D>("Enemies/enemyPlaceholder"))
+            {
+                Position = new Vector2(555, 310)
+            };
+
+            // SET ENEMY SPRITE
+            SetEnemyTexture(stageData.EnemySprite);
+            #endregion
 
             #region Music
 
@@ -163,74 +261,51 @@ namespace concept_0_03
 
             #endregion
 
-            #region Health Bar Textures
-
-            fiveHearts = content.Load<Texture2D>("Health/5");
-            fourHearts = content.Load<Texture2D>("Health/4");
-            threeHearts = content.Load<Texture2D>("Health/3");
-            twoHearts = content.Load<Texture2D>("Health/2");
-            oneHeart = content.Load<Texture2D>("Health/1");
-            zeroHearts = content.Load<Texture2D>("Health/0");
-
-            #endregion
-
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgCloudsSmaller"))
+            Sprite ground = new Sprite(content.Load<Texture2D>("standingGround"))
+            {
+                Position = new Vector2(0, 502)
+            };
+            var screenBackground = new Sprite(content.Load<Texture2D>(bgName))
             {
                 Position = new Vector2(-100, -2)
             };
-
             var questionBackground = new Sprite(content.Load<Texture2D>("textboxes/textbox600x180"))
             {
-                Position = new Vector2(100, 2)
+                Position = new Vector2(100, 32)
             };
-
-            #region Enemy Health Rendering
-            fullEnemyHealthText = "Enemy Health: " + enemyHealth;
-
-            Vector2 m_eHealthPosition = new Vector2(575, 560);
-            Color m_eHealthColor = Color.Black;
-
-            m_eHealthText = new Text(fullEnemyHealthText, m_font, m_eHealthPosition, m_eHealthColor);
-            #endregion
-            #region Enemy Health Bar
-
-            e_healthBarMain = new Sprite(fiveHearts)
-            {
-                Position = m_eHealthPosition
-            };
-
-            #endregion
-
-            #region Player Health Rendering
-            fullPlayerHealthText = "Player Health: " + playerHealth;
-
-            Vector2 m_pHealthPosition = new Vector2(25, 560);
-            Color m_pHealthColor = Color.Black;
-
-            m_pHealthText = new Text(fullPlayerHealthText, m_font, m_pHealthPosition, m_pHealthColor);
-            #endregion
-            #region Player Health Bar
-
-            p_healthBarMain = new Sprite(fiveHearts)
-            {
-                Position = m_pHealthPosition
-            };
-
-            #endregion
 
             #region Question Rendering
 
-            Vector2 m_questionPosition = new Vector2(1, 20);
+            Vector2 m_questionPosition = new Vector2(1, 70);
             Color m_questionColor = Color.Black;
 
             m_questionText = new Text(questionWord, m_Japanese, m_questionPosition, m_questionColor);
-            m_questionText.CenterHorizontal(800, 30);
+            m_questionText.CenterHorizontal(800, 80);
+            #endregion
+
+            Vector2 m_timerPosition = new Vector2(750, 5);
+            m_TimerText = new Text(cdTimer.ToString(), m_Japanese, m_timerPosition, m_questionColor);
+
+            #region Damage Displaying
+
+            PlayerDamaged = new Sprite(content.Load<Texture2D>("BattleFX/playerHit_Small"))
+            {
+                Colour = Color.Transparent,
+                Position = new Vector2(60, 280)
+            };
+
+            EnemyDamaged = new Sprite(content.Load<Texture2D>("BattleFX/enemyHit_Small"))
+            {
+                Colour = Color.Transparent,
+                Position = new Vector2(515, 310)
+            };
+
             #endregion
 
             #region Answer Button 1
             answerButton1 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
-                Position = new Vector2(305, 200),
+                Position = new Vector2(305, 230),
                 Text = optionOne,
             };
 
@@ -239,7 +314,7 @@ namespace concept_0_03
             #region Answer Button 2
             answerButton2 = new Button(content.Load<Texture2D>("Menu/Blue/blue_button03"), m_Japanese)
             {
-                Position = new Vector2(205, 250),
+                Position = new Vector2(205, 280),
                 Text = optionTwo,
             };
 
@@ -248,7 +323,7 @@ namespace concept_0_03
             #region Answer Button 3
             answerButton3 = new Button(content.Load<Texture2D>("Menu/Blue/Blue_button03"), m_Japanese)
             {
-                Position = new Vector2(405, 250),
+                Position = new Vector2(405, 280),
                 Text = optionThree,
             };
 
@@ -257,7 +332,7 @@ namespace concept_0_03
             #region Answer Button 4
             answerButton4 = new Button(content.Load<Texture2D>("Menu/Red/red_button03"), m_Japanese)
             {
-                Position = new Vector2(305, 300),
+                Position = new Vector2(305, 330),
                 Text = optionFour,
             };
 
@@ -269,13 +344,40 @@ namespace concept_0_03
 
                 screenBackground,
                 questionBackground,
-                 answerButton1,
+
+                answerButton1,
                 answerButton2,
                 answerButton3,
                 answerButton4,
+
                 ground,
                 Player,
+                Companion,
+                Enemy,
+
+                PlayerDamaged,
+                EnemyDamaged,
             };
+        }
+
+        private void SetNewQuestion()
+        {
+            //CREATE A NEW QUESITON
+            Question question = new Question(stageData.CurrentSet);
+            //IF THE CURRENT SELECTED QUESTION MATCHES THE LAST... GENERATE A NEW ONE
+            while (question.Quest == lastQuest.Quest) { question = new Question(stageData.CurrentSet); }
+
+            //SET THE FIGHTSCREEN VARIABLES TO THE QUESTION VARIABLES
+            questionWord = question.Quest;
+            optionOne = question.Ans1;
+            optionTwo = question.Ans2;
+            optionThree = question.Ans3;
+            optionFour = question.Ans4;
+            currentWord = question.CorrectAns;
+
+            //MAKE THIS QUESTION THE LAST QUESTION
+            lastQuest = question;
+
         }
 
         #region Click Methods
@@ -283,120 +385,77 @@ namespace concept_0_03
         private void Answer01_Pressed()
         {
             //click.Play();
-
-            if (optionOne == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
-            SetNewQuestion();
+            CheckAns(optionOne);
         }
 
         private void Answer02_Pressed()
         {
             //click.Play();
-
-            if (optionTwo == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
-            SetNewQuestion();
+            CheckAns(optionTwo);
         }
 
         private void Answer03_Pressed()
         {
             //click.Play();
-
-            if (optionThree == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
-            SetNewQuestion();
+            CheckAns(optionThree);
         }
 
         private void Answer04_Pressed()
         {
             //click.Play();
-
-            if (optionFour == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
-            SetNewQuestion();
+            CheckAns(optionFour);
         }
 
         private void AnswerButton1_Click(object sender, EventArgs e)
         {
             //click.Play();
-
-            if (optionOne == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
+            CheckAns(optionOne);         
         }
 
         private void AnswerButton2_Click(object sender, EventArgs e)
         {
             //click.Play();
-
-            if (optionTwo == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
+            CheckAns(optionTwo);
         }
 
         private void AnswerButton3_Click(object sender, EventArgs e)
         {
             //click.Play();
-
-            if (optionThree == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
+            CheckAns(optionThree);
         }
 
         private void AnswerButton4_Click(object sender, EventArgs e)
         {
             //click.Play();
-
-            if (optionFour == currentWord)
-            {
-                enemyHealth -= 1;
-            }
-            else
-            {
-                playerHealth -= 1;
-            }
+            CheckAns(optionFour);
         }
 
         #endregion
+        private void CheckAns(string ans) {
+
+            if (!fightWon)
+            {
+                if (ans == currentWord)
+                {
+                    enemyHealth -= 5;
+                    comboGauge += 1;
+
+                    if (comboGauge == 5) { EnemyDamaged.Colour = new Color(216, 14, 41, 150); }
+                    else { EnemyDamaged.Colour = new Color(255, 255, 255, 255); }
+                }
+                else
+                {
+                    playerHealth -= 5;
+                    cdTimer -= 3;
+                    comboGauge = 0;
+
+                    PlayerDamaged.Colour = new Color(255, 255, 255, 255);
+                }
+                SetNewQuestion();
+
+                DamageTaken = true;
+            }
+        }
 
         public void Pause()
         {
@@ -408,79 +467,168 @@ namespace concept_0_03
             IsPaused = false;
         }
 
+        private void Gameover()
+        {
+            if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                Game1.currentInstance.Stop();
+
+            m_ScreenManager.PopScreen();
+            m_ScreenManager.ChangeScreen(new GameOverScreen(m_ScreenManager));
+        }
+
         public void Update(GameTime gameTime)
         {
 
             foreach (var component in m_components)
                 component.Update(gameTime);
-
-            m_eHealthText.Message = "Enemy Health: " + enemyHealth;
-            m_pHealthText.Message = "Player Health: " + playerHealth;
-            m_questionText.Message = questionWord;
-            answerButton1.Text = optionOne;
-            answerButton2.Text = optionTwo;
-            answerButton3.Text = optionThree;
-            answerButton4.Text = optionFour;
-            m_questionText.CenterHorizontal(800, 30);   
-
-            switch (enemyHealth)
-            {
-                case 5:
-                    break;
-                case 4:
-                    e_healthBarMain.Texture = fourHearts;
-                    break;
-                case 3:
-                    e_healthBarMain.Texture = threeHearts;
-                    break;
-                case 2:
-                    e_healthBarMain.Texture = twoHearts;
-                    break;
-                case 1:
-                    e_healthBarMain.Texture = oneHeart;
-                    break;
-                case 0:
-                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
-                        Game1.currentInstance.Stop();
-
-                    m_ScreenManager.PopScreen();
-                    break;
-            }
-
-            switch (playerHealth)
-            {
-                case 5:
-                    break;
-                case 4:
-                    p_healthBarMain.Texture = fourHearts;
-                    break;
-                case 3:
-                    p_healthBarMain.Texture = threeHearts;
-                    break;
-                case 2:
-                    p_healthBarMain.Texture = twoHearts;
-                    break;
-                case 1:
-                    p_healthBarMain.Texture = oneHeart;
-                    break;
-                case 0:
-                    if (Game1.m_audioState == Game1.AudioState.PLAYING)
-                        Game1.currentInstance.Stop();
-
-                    m_ScreenManager.ChangeScreen(new GameOverScreen(m_ScreenManager));
-                    break;
-            }
+      
+                m_questionText.Message = questionWord;
+                answerButton1.Text = optionOne;
+                answerButton2.Text = optionTwo;
+                answerButton3.Text = optionThree;
+                answerButton4.Text = optionFour;
+                m_questionText.CenterHorizontal(800, 100);         
 
             if (canAnswer == false)
             {
                 canAnswerTimer.Elapsed += CanAnswerTimer_Elapsed;
             }
 
+            // SET TO TRUE AFTER EACH TURN, DISPLAYS WHOEVER LOST HEALTH
+            if (DamageTaken == true)
+            {
+                displayDamageImageTimer.Start();
+
+                displayDamageImageTimer.Elapsed += DisplayDamageImageTimer_Elapsed;
+            }
+
+            //UPDATE TIMER, WHILE FIGHT IS ACTIVE
+            if (fightWon == false)
+            {
+                cdTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                m_TimerText.Message = cdTimer.ToString("0");
+            }
+
+            //IF TIMER REACHES 0, PUSH GAMEOVER SCREEN
+            if (cdTimer <= 0)
+            {
+                Gameover();
+            }
+
+
+            //UPDATE HEALTH & COMBO BARS
+            if (comboGauge >= 5) { enemyHealth -= 5; comboGauge = 0; }
+            playerHPBar = new Rectangle(pHPBarXPos, hpBarYPos, (playerHealth * hpBarLength) / playerMaxHealth, hpBarWidth);
+            enemyHPBar = new Rectangle(eHPBarXPos, hpBarYPos, (enemyHealth * hpBarLength) / enemyMaxHealth, hpBarWidth);
+            comboBar = new Rectangle(216, 8, comboGauge * 75, 15);
+
+            //IF PLAYER HEALTH REACHES 0, PUSH GAMEOVER SCREEN
+            if (playerHealth <= 0)
+            {
+                Gameover();
+            }
+
+            //IF ENEMY HEALTH REACHES 0, POP THE WORLD MAP SCREEN & UNLOCK NEW LEVEL
+            if (enemyHealth <= 0)
+            {
+                fightWon = true;
+            }
+
+            //IF FIGHTWON IS TRUE, DO FIGHT END STUFF
+            if (fightWon == true)
+            {
+                // KEY DROP HERE
+
+                m_questionText.Message = "Enemy defeated! Let's keep going!";
+                m_questionText.CenterHorizontal(800,100);
+                answerButton1.Text = "";
+                answerButton2.Text = "";
+                answerButton3.Text = "";
+                answerButton4.Text = "";
+
+                // START TIMER IF TIMER HASN'T STARTED
+                if (fightWonTimerStarted == false)
+                {
+                    fightWonTimer.Start();
+
+                    fightWonTimerStarted = true;
+                }
+
+                fightWonTimer.Elapsed += FightWonTimer_Elapsed;
+
+                if (canPopFight == true) // POP THE SCREEN AFTER TIMER HAS ELAPSED (HAS TO BE IN UPDATE)
+                {
+                    m_ScreenManager.PopScreen();
+                }
+            }
+        }
+
+        private void FightWonTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            // AUDIO
+            if (Game1.m_audioState == Game1.AudioState.PLAYING)
+                Game1.currentInstance.Stop();
+
+            // SET CANPOP VARIABLE TO TRUE
+            canPopFight = true;
+        }
+
+        private void DisplayDamageImageTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            PlayerDamaged.Colour = Color.Transparent;
+            EnemyDamaged.Colour = Color.Transparent;
+
+            DamageTaken = false;
         }
 
         private void CanAnswerTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             canAnswer = true;
+        }
+
+        private void SetEnemyTexture(string enemy)
+        {
+            switch (enemy)
+            {
+                case "greenSlime":
+                    Enemy.Texture = greenSlime;
+                    break;
+                case "pinkSlime":
+                    Enemy.Texture = pinkSlime;
+                    break;
+                case "blueSlime":
+                    Enemy.Texture = blueSlime;
+                    break;
+                case "tinySlimes":
+                    Enemy.Texture = tinySlimes;
+                    break;
+
+                case "whiteWisp":
+                    Enemy.Texture = whiteWisp;
+                    break;
+                case "blueWisp":
+                    Enemy.Texture = blueWisp;
+                    break;
+                case "orangeWisp":
+                    Enemy.Texture = orangeWisp;
+                    break;
+
+                case "aobozu":
+                    Enemy.Texture = aobozu;
+                    break;
+                case "betobetosan":
+                    Enemy.Texture = betobetosan;
+                    break;
+                case "hellhound":
+                    Enemy.Texture = hellhound;
+                    break;
+                case "oni":
+                    Enemy.Texture = oni;
+                    break;
+                case "pixies":
+                    Enemy.Texture = pixies;
+                    break;
+            }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -495,10 +643,15 @@ namespace concept_0_03
             foreach (var component in m_components)
                 component.Draw(gameTime, spriteBatch);
 
-            e_healthBarMain.Draw(gameTime, spriteBatch);
-            p_healthBarMain.Draw(gameTime, spriteBatch);
-
             m_questionText.Draw(spriteBatch);
+            m_TimerText.Draw(spriteBatch);
+
+            spriteBatch.Draw(HPTexture, pHPBarBG, Color.Black);
+            spriteBatch.Draw(HPTexture, eHPBarBG, Color.Black);
+            spriteBatch.Draw(HPTexture, comboBarBG, Color.Black);
+            spriteBatch.Draw(HPTexture, playerHPBar, Color.White);
+            spriteBatch.Draw(HPTexture, enemyHPBar, Color.White);
+            spriteBatch.Draw(HPTexture, comboBar, Color.White);
 
             spriteBatch.End();
         }
