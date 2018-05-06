@@ -57,6 +57,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Alphabet\KataAlphabet.cs" />
     <Compile Include="Alphabet\HiraAlphabet.cs" />
     <Compile Include="Alphabet\JapChar.cs" />
     <Compile Include="Alphabet\Question.cs" />

@@ -94,7 +94,7 @@ namespace concept_0_03
             uncheckedBox = content.Load<Texture2D>("Menu/Grey/grey_circle");
             checkedBox = content.Load<Texture2D>("Menu/Red/red_boxTick");
 
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountainsSmaller"))
+            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgMountains"))
             {
                 Position = new Vector2(-100, -2)
             };

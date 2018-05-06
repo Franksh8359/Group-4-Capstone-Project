@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/MattedCrow/Documents/GitHub/HollyBranch/Group-4-Capstone-Project/concept_0_03/Content/Enemies/betobetosan.png</SourceFile>
-  <SourceTime>2018-04-29T22:01:49.9386519-04:00</SourceTime>
-  <DestFile>C:/Users/MattedCrow/Documents/GitHub/HollyBranch/Group-4-Capstone-Project/concept_0_03/Content/bin/DesktopGL/Enemies/betobetosan.xnb</DestFile>
-  <DestTime>2018-05-04T15:40:02.4143948-04:00</DestTime>
+  <SourceFile>C:/Users/Mio/Downloads/Group-4-Capstone-Project-5-5/Group-4-Capstone-Project-master/concept_0_03/Content/Enemies/betobetosan.png</SourceFile>
+  <SourceTime>2018-05-05T14:04:08.5917911-04:00</SourceTime>
+  <DestFile>C:/Users/Mio/Downloads/Group-4-Capstone-Project-5-5/Group-4-Capstone-Project-master/concept_0_03/Content/bin/DesktopGL/Enemies/betobetosan.xnb</DestFile>
+  <DestTime>2018-05-05T14:04:50.9664356-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T10:05:36-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

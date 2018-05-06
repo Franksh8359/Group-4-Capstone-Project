@@ -55,6 +55,7 @@ namespace concept_0_03
         private Stage.StageData stageData = new Stage.StageData(); //CREATE A NEW STAGEDATA LIST
         private string stageID;
         private Question lastQuest = new Question();
+        private string bgName;
         float cdTimer = 0;
 
         #region Question Variables
@@ -89,6 +90,13 @@ namespace concept_0_03
         private int playerHealth = 50;
         private int enemyMaxHealth = 0;
         private int playerMaxHealth = 50;
+
+        //cCOMBO BAR
+        private Rectangle comboBarBG;
+        private Rectangle comboBar;
+
+        private bool comboDamage = false;
+        private int comboGauge = 0;
 
         //SPRITES
         private Sprite Player;
@@ -135,6 +143,7 @@ namespace concept_0_03
             cdTimer = stageData.Timer;
             enemyHealth = stageData.EnemyHP;
             enemyMaxHealth = stageData.EnemyHP;
+            bgName = "BGs/" + stageData.StageBG;
 
             SetNewQuestion();
 
@@ -177,6 +186,7 @@ namespace concept_0_03
             HPTexture = content.Load<Texture2D>("Health/health");
             pHPBarBG = new Rectangle(pHPBarXPos - 3, hpBarYPos - 3, 256, 36);
             eHPBarBG = new Rectangle(eHPBarXPos - 3, hpBarYPos - 3, 256, 36);
+            comboBarBG = new Rectangle(213, 5, 375, 21);
 
             #region Sprite Displaying
             Player = new Sprite(Game1.activePlayer_FightTexture)
@@ -253,7 +263,7 @@ namespace concept_0_03
             {
                 Position = new Vector2(0, 502)
             };
-            var screenBackground = new Sprite(content.Load<Texture2D>("BGs/bgCloudsSmaller"))
+            var screenBackground = new Sprite(content.Load<Texture2D>(bgName))
             {
                 Position = new Vector2(-100, -2)
             };
@@ -420,22 +430,29 @@ namespace concept_0_03
 
         #endregion
         private void CheckAns(string ans) {
-            if (ans == currentWord)
+
+            if (!fightWon)
             {
-                enemyHealth -= 5;
+                if (ans == currentWord)
+                {
+                    enemyHealth -= 5;
+                    comboGauge += 1;
 
-                EnemyDamaged.Colour = new Color(255, 255, 255, 255);
+                    if (comboGauge == 5) { EnemyDamaged.Colour = new Color(216, 14, 41, 150); }
+                    else { EnemyDamaged.Colour = new Color(255, 255, 255, 255); }
+                }
+                else
+                {
+                    playerHealth -= 5;
+                    cdTimer -= 3;
+                    comboGauge = 0;
+
+                    PlayerDamaged.Colour = new Color(255, 255, 255, 255);
+                }
+                SetNewQuestion();
+
+                DamageTaken = true;
             }
-            else
-            {
-                playerHealth -= 5;
-                cdTimer -= 3;
-
-                PlayerDamaged.Colour = new Color(255, 255, 255, 255);
-            }
-            SetNewQuestion();
-
-            DamageTaken = true;
         }
 
         public void Pause()
@@ -462,13 +479,13 @@ namespace concept_0_03
 
             foreach (var component in m_components)
                 component.Update(gameTime);
-
-            m_questionText.Message = questionWord;
-            answerButton1.Text = optionOne;
-            answerButton2.Text = optionTwo;
-            answerButton3.Text = optionThree;
-            answerButton4.Text = optionFour;
-            m_questionText.CenterHorizontal(800, 100);
+      
+                m_questionText.Message = questionWord;
+                answerButton1.Text = optionOne;
+                answerButton2.Text = optionTwo;
+                answerButton3.Text = optionThree;
+                answerButton4.Text = optionFour;
+                m_questionText.CenterHorizontal(800, 100);         
 
             if (canAnswer == false)
             {
@@ -496,9 +513,12 @@ namespace concept_0_03
                 Gameover();
             }
 
-            //UPDATE HEALTH BARS
+
+            //UPDATE HEALTH & COMBO BARS
+            if (comboGauge >= 5) { enemyHealth -= 5; comboGauge = 0; }
             playerHPBar = new Rectangle(pHPBarXPos, hpBarYPos, (playerHealth * hpBarLength) / playerMaxHealth, hpBarWidth);
             enemyHPBar = new Rectangle(eHPBarXPos, hpBarYPos, (enemyHealth * hpBarLength) / enemyMaxHealth, hpBarWidth);
+            comboBar = new Rectangle(216, 8, comboGauge * 75, 15);
 
             //IF PLAYER HEALTH REACHES 0, PUSH GAMEOVER SCREEN
             if (playerHealth <= 0)
@@ -519,6 +539,10 @@ namespace concept_0_03
 
                 m_questionText.Message = "Enemy defeated! Let's keep going!";
                 m_questionText.CenterHorizontal(800,100);
+                answerButton1.Text = "";
+                answerButton2.Text = "";
+                answerButton3.Text = "";
+                answerButton4.Text = "";
 
                 // START TIMER IF TIMER HASN'T STARTED
                 if (fightWonTimerStarted == false)
@@ -622,8 +646,10 @@ namespace concept_0_03
 
             spriteBatch.Draw(HPTexture, pHPBarBG, Color.Black);
             spriteBatch.Draw(HPTexture, eHPBarBG, Color.Black);
+            spriteBatch.Draw(HPTexture, comboBarBG, Color.Black);
             spriteBatch.Draw(HPTexture, playerHPBar, Color.White);
             spriteBatch.Draw(HPTexture, enemyHPBar, Color.White);
+            spriteBatch.Draw(HPTexture, comboBar, Color.White);
 
             spriteBatch.End();
         }

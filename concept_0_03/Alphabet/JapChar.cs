@@ -14,6 +14,8 @@ namespace concept_0_03.Alphabet
         private string vowelSet; //vowel set id
         private string consonantSet; //consonant set id
 
+        private List<JapChar> charList = new List<JapChar> { };
+
         public JapChar()
         {
 
@@ -33,6 +35,8 @@ namespace concept_0_03.Alphabet
         public string Img { get { return img; } set { img = value; } }
         public string VowelSet { get { return vowelSet; } set { vowelSet = value; } }
         public string ConsonantSet { get { return consonantSet; } set { consonantSet = value; } }
+
+        public List<JapChar> CharList { get { return charList; } set { charList = value; } }
     }
 }
 
